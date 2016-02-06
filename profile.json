@@ -38,7 +38,7 @@
 		// "command": "$e --batch --exec=$f",
 
 		//The DefaultPlugin will use the optional 'defaultGrid'-property to set a default grid to a game, when no other plugin could provide a grid image.
-		//"defaultGrid": "D:\\Pictures\\Grids\\default.png", //TODO: Not yet implemented
+		"defaultGrid": "D:\\Games\\Wii\\Meta\\Grids\\default.png",
 
 		//DolphinPlugin uses this property.
 		"dolphin": {
@@ -67,6 +67,7 @@
         "tags": ["Mario","Arcade Racing","favorite"]
       }
     },
+		"defaultGrid": "D:\\Games\\Wii\\Meta\\Grids\\default.png",
 		"dolphin": {
 			"useDeveloperAsTag": true,
 			"usePublisherAsTag": true,
