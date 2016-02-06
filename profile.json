@@ -54,7 +54,7 @@
   //equivalent glob example
   "Dolphin": {
     "exe": "D:\\Software\\Dolphin\\Dolphin.exe",
-    "glob": "D:\\Games\\Wii\\**\\RRYPHY.@(iso|wbfs)",
+    "glob": "D:\\Games\\Wii\\**\\*.@(iso|wbfs)",
 
     "tags": ["Wii"],
     "gridDir": "D:\\Pictures\\Grids\\",
