@@ -1,0 +1,47 @@
+{
+  "name": "nostegma",
+  "version": "0.0.1",
+  "description": "Nostegma - A Non-Steam Game Manager",
+  "dependencies": {
+    "async": "^1.5.2",
+    "cheerio": "^0.20.0",
+    "cli": "^0.11.1",
+    "comment-json": "^1.1.3",
+    "deasync": "^0.1.4",
+    "diacritics": "^1.2.3",
+    "fs-extra": "^0.26.5",
+    "glob": "^6.0.4",
+    "i18n": "^0.6.0",
+    "log4js": "^0.6.30",
+    "node-steam-shortcuts": "^1.1.0",
+    "ono": "^2.1.1",
+    "prompt": "^0.2.14",
+    "request": "^2.69.0",
+    "tmp": "0.0.28",
+    "winreg": "0.0.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hafas/nostegma.git"
+  },
+  "files": [
+    "lib/",
+    "locales/",
+    "plugins/",
+    "config.json",
+    "LICENSE",
+    "log4js.json",
+    "Nostegma.js",
+    "README.md"
+  ],
+  "author": "Theodor Hafas",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Hafas/nostegma/issues"
+  },
+  "homepage": "https://github.com/Hafas/nostegma#readme"
+}
