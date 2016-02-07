@@ -37,5 +37,6 @@
 	"Plugin '%s' failed. Reason: %s": "Plugin '%s' failed. Reason: %s",
 	"Done processing file '%s'.": "Done processing file '%s'.",
 	"Overwrites the shortcuts.vdf instead of complementing it. All previous Non-Steam Games will get lost.": "Overwrites the shortcuts.vdf instead of complementing it. All previous Non-Steam Games will get lost.",
-	"Writing to shortcuts.vdf of '%s'": "Writing to shortcuts.vdf of '%s'"
+	"Writing to shortcuts.vdf of '%s'": "Writing to shortcuts.vdf of '%s'",
+	"Reading from shortcuts.vdf of '%s'": "Reading from shortcuts.vdf of '%s'"
 }

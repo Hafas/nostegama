@@ -23,7 +23,7 @@ var DolphinPlugin=function DolphinPlugin(params){
 	this.exe=profile.exe;
 };
 
-var WIKI_URL="https://wiki.dolphin-emu.org/index.php?search=";
+var WIKI_URL="https://wiki.dolphin-emu.org/index.php?title=";
 DolphinPlugin.prototype.before=function(callback){
 	var searchInput;
 	try{
@@ -36,11 +36,11 @@ DolphinPlugin.prototype.before=function(callback){
 		if(err){
 			return callback && callback(err);
 		}
-		if(response.request.uri.query.indexOf("title")===0){
-			self.wikiBody=cheerio.load(body);
-		}else{
+		LOG.debug("DolphinPlugin.before","statusCode",response.statusCode);
+		if(response.statusCode===404){
 			return callback && callback(ono(i18n.__("No page on Dolphin's Wiki found for %s",searchInput)));
 		}
+		self.wikiBody=cheerio.load(body);
 		callback && callback();
 	});
 };
