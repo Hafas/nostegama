@@ -56,6 +56,9 @@ Async.series([
 							function(callback){
 								Async.waterfall([
 									function(callback){
+										if(GlobalConfiguration.overwrite){
+											return callback(null, new ShortcutCollection());
+										}
 										Userdata.readShortcuts(steamUser,callback)
 									},
 									function(shortcutCollection,callback){
