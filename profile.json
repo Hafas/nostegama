@@ -1,42 +1,44 @@
 {
-  //emulator example
-  //name of the profile
-  "Dolphin": {
-    //mandatory
-    "exe": "D:\\Software\\Dolphin\\Dolphin.exe",
-    //mandatory, if "glob" is not present
-    "dir": "D:\\Games\\Wii\\",
+	//emulator example
+	//name of the profile
+	"Dolphin": {
+		//mandatory
+		"exe": "D:\\Software\\Dolphin\\Dolphin.exe",
+		//mandatory, if "glob" is not present
+		"dir": "D:\\Games\\Wii\\",
 
-    //optional. Search for games and grids recursively. Default false. Will be ignored if "glob" is used.
-    "recursive": true,
-    //optional. Whitelist of extensions. Default: process all files in "dir". Will be ignored when "glob" is used.
-    "extensions": ["iso","wbfs"],
+		//optional. Search for games and grids recursively. Default false. Will be ignored if "glob" is used.
+		"recursive": true,
+		//optional. Whitelist of extensions. Default: process all files in "dir". Will be ignored when "glob" is used.
+		"extensions": ["iso","wbfs"],
 
-    //optional. List of tags applied to all games.
-    "tags": ["Wii"],
+		//optional. List of tags applied to all games.
+		"tags": ["Wii"],
 
-    //optional. The names of the plugins that should process a game's file to fill undefined values.
-    "plugins": ["DolphinPlugin","LocalGridPlugin","ConsoleGridPlugin"],
-    //list of file names or globs of games to ignore
-    "ignore": [],
-    //optional. additional information to each game
-    "extra": {
-      //The name of the file (or more precisely the end of the file's path)
-      "RMCP01.wbfs": {
-        //A plugin won't alter these explicitly set values
-        //the name that should be displayed in Steam. Default is the name of the file (without its extension).
-        "appname": "Mario Kart Wii",
-        //additional tags applied to the game.
-        "tags": ["Mario","Arcade Racing","favorite"]
-      }
-    },
+		//optional. The names of the plugins that should process a game's file to fill undefined values.
+		"plugins": ["DolphinPlugin","LocalGridPlugin","ConsoleGridPlugin"],
+		//list of file names or globs of games to ignore
+		"ignore": [],
+		//optional. additional information to each game
+		"extra": {
+			//The name of the file (or more precisely the end of the file's path)
+			"RMCP01.wbfs": {
+				//A plugin won't alter these explicitly set values
+				//the name that should be displayed in Steam. Default is the name of the file (without its extension).
+				"appname": "Mario Kart Wii",
+				//additional tags applied to the game.
+				"tags": ["Mario","Arcade Racing","favorite"]
+			}
+		},
 		//Additional properties, plugins may use, need or ignore.
 
-		//The DefaultPlugin uses the optional 'command'-property to generate the command Steam will later use (if an other plugin didn't already). $e is the executable. $f is the path to the file the executable should open. DefaultPlugin uses "$e $f" if command is not set. DolphinPlugin sets this property to "$e --batch --exec=$f", so you won't have to set it yourself
+		//The DefaultPlugin uses the optional 'command'-property to generate the command Steam will later use (if an other plugin didn't already).
+		//$e is the executable. $f is the path to the file the executable should open. DefaultPlugin uses "$e $f" if command is not set.
+		//DolphinPlugin sets this property to "$e --batch --exec=$f", so you won't have to set it yourself
 		// "command": "$e --batch --exec=$f",
 
 		//The LocalGridPlugin will use this property to come up with a grid image from a local storage. The grid's image should have the same name as the file of the game.
-    "gridDir": "D:\\Games\\Wii\\Meta\\Grids\\",
+		"gridDir": "D:\\Games\\Wii\\Meta\\Grids\\",
 
 		//The DefaultPlugin will use the optional 'defaultGrid'-property to set a default grid to a game, when no other plugin could provide a grid image.
 		"defaultGrid": "D:\\Games\\Wii\\Meta\\Grids\\default.png",
@@ -51,23 +53,23 @@
 			"useModesAsTag": true,
 			"useInputMethodAsTag": true
 		}
-  },
-  //equivalent glob example
-  "Dolphin": {
-    "exe": "D:\\Software\\Dolphin\\Dolphin.exe",
-    "glob": "D:\\Games\\Wii\\**\\*.@(iso|wbfs)",
+	},
+	//equivalent glob example
+	"Dolphin": {
+		"exe": "D:\\Software\\Dolphin\\Dolphin.exe",
+		"glob": "D:\\Games\\Wii\\**\\*.@(iso|wbfs)",
 
-    "tags": ["Wii"],
-    "gridDir": "D:\\Pictures\\Grids\\",
+		"tags": ["Wii"],
+		"gridDir": "D:\\Pictures\\Grids\\",
 
-    "plugins": ["DolphinPlugin","LocalGridPlugin","ConsoleGridPlugin"],
-    "ignore": [],
-    "extra": {
-      "RMCP01.wbfs": {
-        "appname": "Mario Kart Wii",
-        "tags": ["Mario","Arcade Racing","favorite"]
-      }
-    },
+		// "plugins": ["DolphinPlugin","LocalGridPlugin","ConsoleGridPlugin"],
+		"ignore": [],
+		"extra": {
+			"RMCP01.wbfs": {
+				"appname": "Mario Kart Wii",
+				"tags": ["Mario","Arcade Racing","favorite"]
+			}
+		},
 		"gridDir": "D:\\Games\\Wii\\Meta\\Grids\\",
 		"defaultGrid": "D:\\Games\\Wii\\Meta\\Grids\\default.png",
 		"dolphin": {
@@ -78,5 +80,5 @@
 			"useModesAsTag": true,
 			"useInputMethodAsTag": true
 		}
-  }
+	}
 }

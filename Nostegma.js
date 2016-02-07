@@ -12,23 +12,23 @@ var ShortcutCollection=require("node-steam-shortcuts").ShortcutCollection;
 var Userdata=require("./lib/Userdata");
 
 Async.series([
-  function(callback){
-    Userdata.validate(callback);
-  },
-  function(callback){
-    Async.waterfall([
-      function(callback){
-        Userdata.getSteamUsers(callback);
-      },
-      function(steamUsers,callback){
-        if(steamUsers.length===0){
-          return callback(ono(Errors.noSteamIDsFound,i18n.__("No Steam IDs in the userdata directory were found. Make sure that the directory is correct, and that you have logged in to Steam at least once.")));
-        }
-        if(steamUsers.length===1){
-          return callback(null,steamUsers);
-        }
+	function(callback){
+		Userdata.validate(callback);
+	},
+	function(callback){
+		Async.waterfall([
+			function(callback){
+				Userdata.getSteamUsers(callback);
+			},
+			function(steamUsers,callback){
+				if(steamUsers.length===0){
+					return callback(ono(Errors.noSteamIDsFound,i18n.__("No Steam IDs in the userdata directory were found. Make sure that the directory is correct, and that you have logged in to Steam at least once.")));
+				}
+				if(steamUsers.length===1){
+					return callback(null,steamUsers);
+				}
 				Prompts.chooseSteamUsers(steamUsers,callback);
-      },
+			},
 			function(steamUsers,callback){
 				Async.waterfall([
 					function(callback){
@@ -73,13 +73,13 @@ Async.series([
 					},callback);
 				});
 			}
-    ],callback);
-  }
+		],callback);
+	}
 ],function(err){
-  if(err){
-    LOG.fatal(err.message || err);
-    process.exit(1);
-  }
-  LOG.info(i18n.__("All done!"));
+	if(err){
+		LOG.fatal(err.message || err);
+		process.exit(1);
+	}
+	LOG.info(i18n.__("All done!"));
 	process.exit(0);
 });

@@ -6,7 +6,7 @@
  * file: The file the executable should open. Might not be present in case of a simple profile.
  */
 var AbstractPlugin=function(params){
-  throw new Error("This prototype is abstract and can't be instantiated!");
+	throw new Error("This prototype is abstract and can't be instantiated!");
 };
 
 /**
@@ -23,7 +23,7 @@ var AbstractPlugin=function(params){
  * callback: The callback. Returns the appname in its 2nd argument.
  */
 AbstractPlugin.prototype.getAppname=function(params,callback){
-  callback(null,null);
+	callback(null,null);
 };
 
 /**
@@ -31,7 +31,7 @@ AbstractPlugin.prototype.getAppname=function(params,callback){
  * callback: The callback. Returns the command that Steam will run in its 2nd argument.
  */
 AbstractPlugin.prototype.getExe=function(params,callback){
-  callback(null,null);
+	callback(null,null);
 };
 
 /**
@@ -39,7 +39,7 @@ AbstractPlugin.prototype.getExe=function(params,callback){
  * callback: The callback. Returns the working directory of the executable in its 2nd argument.
  */
 AbstractPlugin.prototype.getStartDir=function(params,callback){
-  callback(null,null);
+	callback(null,null);
 };
 
 /**
@@ -47,7 +47,7 @@ AbstractPlugin.prototype.getStartDir=function(params,callback){
  * callback: The callback. Returns a path to an icon-file in its 2nd argument.
  */
 AbstractPlugin.prototype.getIcon=function(params,callback){
-  callback(null,null);
+	callback(null,null);
 };
 
 /**
@@ -55,7 +55,7 @@ AbstractPlugin.prototype.getIcon=function(params,callback){
  * callback: The callback.
  */
 AbstractPlugin.prototype.getShortcutPath(params,callback){
-  callback(null,null);
+	callback(null,null);
 };
 
 /**
@@ -63,7 +63,7 @@ AbstractPlugin.prototype.getShortcutPath(params,callback){
  * callback: The callback. Returns an array of tags in its 2nd argument.
  */
 AbstractPlugin.prototype.getTags=function(params,callback){
-  callback(null,null);
+	callback(null,null);
 }
 
 module.exports=AbstractPlugin;
