@@ -7,6 +7,7 @@ var path=require("path");
 var request=require("request");
 var tmp=require("tmp");
 
+var AbstractPlugin=require("./AbstractPlugin");
 var LOG=require("../lib/Logger");
 
 var ConsoleGridPlugin=function ConsoleGridPlugin(params){
@@ -14,6 +15,9 @@ var ConsoleGridPlugin=function ConsoleGridPlugin(params){
 	params=params || {};
 	this.file=params.file;
 };
+
+ConsoleGridPlugin.prototype=Object.create(AbstractPlugin.prototype);
+ConsoleGridPlugin.prototype.constructor=ConsoleGridPlugin;
 
 var CONSOLEGRID_URL="http://consolegrid.com"
 var SEARCH_URL=CONSOLEGRID_URL+"/games?utf8=✓&q=";
@@ -71,6 +75,7 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
 	}
 
 	var gridFilepath=null;
+	var self=this;
 	Async.eachSeries(searchInputsToTry,function(searchInput,callback){
 		if(gridFilepath){
 			return callback();
@@ -125,6 +130,9 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
 							callbackCalled=true;
 							//callback the path where where the grid image is. Nostegma will see to it, that it goes where it should.
 							callback(null,tmpFilepath);
+						}).on("pipe",function(){
+							LOG.debug("Piping into %s",tmpFilepath);
+							self.trackTemporary(tmpFilepath);
 						});
 						request(source).pipe(writeStream);
 					}

@@ -1,3 +1,5 @@
+var TemporaryTracker=require("../lib/TemporaryTracker");
+
 /**
  * AbstractPlugin(params)
  * params contains the following properties
@@ -23,64 +25,52 @@ var AbstractPlugin=function(params){
  * This function is called before any other plugin-method if implemented.
  * callback: The callback. When returning a truthy value in its first argument (an Error) all other plugin operations will be skipped
  */
-AbstractPlugin.prototype.before=function(callback){
-	callback(null);
-};
+AbstractPlugin.prototype.before=null;
 
 /**
  * getAppname(params,callback)
  * callback: The callback. Returns the appname in its 2nd argument.
  */
-AbstractPlugin.prototype.getAppname=function(params,callback){
-	callback(null,null);
-};
+AbstractPlugin.prototype.getAppname=null;
 
 /**
  * getExe(params,callback)
  * callback: The callback. Returns the command that Steam will run in its 2nd argument.
  */
-AbstractPlugin.prototype.getExe=function(params,callback){
-	callback(null,null);
-};
+AbstractPlugin.prototype.getExe=null;
 
 /**
  * getStartDir(params,callback)
  * callback: The callback. Returns the working directory of the executable in its 2nd argument.
  */
-AbstractPlugin.prototype.getStartDir=function(params,callback){
-	callback(null,null);
-};
+AbstractPlugin.prototype.getStartDir=null;
 
 /**
  * getIcon(params,callback)
  * callback: The callback. Returns a path to an icon-file in its 2nd argument.
  */
-AbstractPlugin.prototype.getIcon=function(params,callback){
-	callback(null,null);
-};
+AbstractPlugin.prototype.getIcon=null;
 
 /**
  * getShortcutPath(params,callback)
  * callback: The callback.
  */
-AbstractPlugin.prototype.getShortcutPath(params,callback){
-	callback(null,null);
-};
+AbstractPlugin.prototype.getShortcutPath=null;
 
 /**
  * getTags(params,callback)
  * callback: The callback. Returns an array of tags in its 2nd argument.
  */
-AbstractPlugin.prototype.getTags=function(params,callback){
-	callback(null,null);
-};
+AbstractPlugin.prototype.getTags=null;
 
 /**
  * getGrid(params,callback)
  * callback: The callback. Returns the path to a grid image in its 2nd argument.
  */
-AbstractPlugin.prototype.getGrid=function(params,callback){
-	callback(null,null);
+AbstractPlugin.prototype.getGrid=null;
+
+AbstractPlugin.prototype.trackTemporary=function(temporaryFile){
+	TemporaryTracker.track(temporaryFile);
 };
 
 module.exports=AbstractPlugin;

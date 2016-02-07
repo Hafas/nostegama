@@ -4,7 +4,8 @@ var ono=require("ono");
 var path=require("path");
 var request=require("request");
 
-var DefaultPlugin=require("../lib/DefaultPlugin");
+var AbstractPlugin=require("./AbstractPlugin");
+var DefaultPlugin=require("./DefaultPlugin");
 var LOG=require("../lib/Logger");
 
 var DolphinPlugin=function DolphinPlugin(params){
@@ -22,6 +23,9 @@ var DolphinPlugin=function DolphinPlugin(params){
 	this.file=params.file;
 	this.exe=profile.exe;
 };
+
+DolphinPlugin.prototype=Object.create(AbstractPlugin.prototype);
+DolphinPlugin.prototype.constructor=DolphinPlugin;
 
 var WIKI_URL="https://wiki.dolphin-emu.org/index.php?title=";
 DolphinPlugin.prototype.before=function(callback){

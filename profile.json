@@ -16,6 +16,7 @@
 		"tags": ["Wii"],
 
 		//optional. The names of the plugins that should process a game's file to fill undefined values.
+		//The DefaultPlugin will always be used at the end.
 		"plugins": ["DolphinPlugin","LocalGridPlugin","ConsoleGridPlugin"],
 		//list of file names or globs of games to ignore
 		"ignore": [],

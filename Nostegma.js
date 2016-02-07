@@ -6,9 +6,10 @@ var i18n=require("i18n");
 var Backup=require("./lib/Backup");
 var Errors=require("./lib/Errors");
 var LOG=require("./lib/Logger");
-var Prompts=require("./lib/Prompts");
 var ProfileController=require("./lib/ProfileController");
+var Prompts=require("./lib/Prompts");
 var ShortcutCollection=require("node-steam-shortcuts").ShortcutCollection;
+var TemporaryTracker=require("./lib/TemporaryTracker");
 var Userdata=require("./lib/Userdata");
 
 Async.series([
@@ -79,10 +80,17 @@ Async.series([
 		],callback);
 	}
 ],function(err){
+	var exitCode=0;
 	if(err){
 		LOG.fatal(err.message || err);
-		process.exit(1);
+		exitCode=1;
 	}
-	LOG.info(i18n.__("All done!"));
-	process.exit(0);
+	TemporaryTracker.cleanup(function(){
+		if(!err){
+			LOG.info(i18n.__("All done!"));
+		}
+		if(exitCode>0){			
+			process.exit(exitCode);
+		}
+	});
 });

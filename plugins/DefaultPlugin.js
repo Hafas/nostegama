@@ -1,5 +1,7 @@
 var path=require("path");
-var LOG=require("./Logger");
+
+var AbstractPlugin=require("./AbstractPlugin");
+var LOG=require("../lib/Logger");
 
 var DefaultPlugin=function DefaultPlugin(params){
 	LOG.trace("DefaultPlugin");
@@ -14,6 +16,9 @@ var DefaultPlugin=function DefaultPlugin(params){
 	}
 	this.file=params.file;
 };
+
+DefaultPlugin.prototype=Object.create(AbstractPlugin.prototype);
+DefaultPlugin.prototype.constructor=DefaultPlugin;
 
 DefaultPlugin.prototype.getAppname=function(params,callback){
 	LOG.trace("DefaultPlugin.getAppname");

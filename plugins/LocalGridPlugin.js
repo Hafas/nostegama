@@ -3,6 +3,7 @@ var i18n=require("i18n");
 var ono=require("ono");
 var path=require("path");
 
+var AbstractPlugin=require("./AbstractPlugin");
 var LOG=require("../lib/Logger");
 
 var LocalGridPlugin=function LocalGridPlugin(params){
@@ -16,6 +17,9 @@ var LocalGridPlugin=function LocalGridPlugin(params){
 	}
 	this.file=params.file;
 };
+
+LocalGridPlugin.prototype=Object.create(AbstractPlugin);
+LocalGridPlugin.prototype.constructor=LocalGridPlugin;
 
 LocalGridPlugin.prototype.getGrid=function(params,callback){
 	if(!this.gridDir){
