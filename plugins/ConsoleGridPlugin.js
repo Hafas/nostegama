@@ -106,7 +106,9 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
 				LOG.debug("ConsoleGridPlugin.getGrid","imageUrl",source);
 				//download the image somewhere in the temporary directory.
 				Async.waterfall([
-					tmp.tmpName,
+					function(callback){
+						tmp.tmpName({postfix: path.extname(source)},callback);
+					},
 					function(tmpFilepath,callback){
 						var writeStream=fs.createWriteStream(tmpFilepath);
 						var callbackCalled=false;
