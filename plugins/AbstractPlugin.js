@@ -8,16 +8,16 @@ var TemporaryTracker=require("../lib/TemporaryTracker");
  * file: The file the executable should open. Might not be present in case of a simple profile.
  */
 var AbstractPlugin=function(params){
-	throw new Error("This prototype is abstract and can't be instantiated!");
+  throw new Error("This prototype is abstract and can't be instantiated!");
 };
 
 /**
  * General information, when implementing a method:
  * params: An object that might contains useful information about the game
- *		nonSteamGame: the Non-Steam Game so far, after applying changes from extra and previous plugins
+ *    nonSteamGame: the Non-Steam Game so far, after applying changes from extra and previous plugins
  * callback: Return in its first argument a truthy value if an error occured while trying to acquire a property. The next Plugin will then try to acquire that property.
- *		Return in its second argument the property you acquired. No other Plugin will override that value.
- *		Return in its second argument a falsy value, when you are unable to acquire that property. The next Plugin will then try to acquire that property.
+ *    Return in its second argument the property you acquired. No other Plugin will override that value.
+ *    Return in its second argument a falsy value, when you are unable to acquire that property. The next Plugin will then try to acquire that property.
  */
 
 /**
@@ -70,7 +70,7 @@ AbstractPlugin.prototype.getTags=null;
 AbstractPlugin.prototype.getGrid=null;
 
 AbstractPlugin.prototype.trackTemporary=function(temporaryFile){
-	TemporaryTracker.track(temporaryFile);
+  TemporaryTracker.track(temporaryFile);
 };
 
 module.exports=AbstractPlugin;
