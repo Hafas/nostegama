@@ -1,26 +1,26 @@
 {
-	"appenders": [
-		{
-			"category": "console",
-			"type": "console",
-			"layout": {
-				"type": "pattern",
-				"pattern": "%[[%p]%]\t%m"
-			}
-		},
-		{
-			"category": "nostegma",
-			"type": "dateFile",
-			"filename": "nostegma.log",
-			"pattern": "-MM-dd",
-			"layout": {
-				"type": "pattern",
-				"pattern": "[%d{ISO8601}] [%p]\t%m"
-			}
-		}
-	],
-	"levels": {
-		"console": "INFO",
-		"nostegma": "TRACE"
-	}
+  "appenders": [
+    {
+      "category": "console",
+      "type": "console",
+      "layout": {
+        "type": "pattern",
+        "pattern": "%[[%p]%]\t%m"
+      }
+    },
+    {
+      "category": "nostegma",
+      "type": "dateFile",
+      "filename": "nostegma.log",
+      "pattern": "-MM-dd",
+      "layout": {
+        "type": "pattern",
+        "pattern": "[%d{ISO8601}] [%p]\t%m"
+      }
+    }
+  ],
+  "levels": {
+    "console": "INFO",
+    "nostegma": "TRACE"
+  }
 }
