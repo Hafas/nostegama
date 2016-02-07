@@ -1,6 +1,6 @@
 {
 	"name": "nostegma",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"description": "Nostegma - A Non-Steam Game Manager",
 	"dependencies": {
 		"async": "^1.5.2",
