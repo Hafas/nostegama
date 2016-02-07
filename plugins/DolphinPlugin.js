@@ -68,7 +68,7 @@ DolphinPlugin.prototype.getAppname=function(params,callback){
 	}
 	return callback && callback(null,appname);
 };
-
+// adf
 var SPLIT_PATTERN=/\s*,\s*/;
 DolphinPlugin.prototype.getTags=function(params,callback){
 	var $=this.wikiBody;

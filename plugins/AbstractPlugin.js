@@ -64,6 +64,14 @@ AbstractPlugin.prototype.getShortcutPath(params,callback){
  */
 AbstractPlugin.prototype.getTags=function(params,callback){
 	callback(null,null);
-}
+};
+
+/**
+ * getGrid(callback)
+ * callback: The callback. Returns the path to a grid image in its 2nd argument.
+ */
+AbstractPlugin.prototype.getGrid=function(params,callback){
+	callback(null,null);
+};
 
 module.exports=AbstractPlugin;

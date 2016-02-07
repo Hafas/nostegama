@@ -60,8 +60,19 @@
 		"glob": "D:\\Games\\Wii\\**\\*.@(iso|wbfs)",
 
 		"tags": ["Wii"],
-		"gridDir": "D:\\Pictures\\Grids\\",
-
+		//alternate plugin registration
+		"plugins": [
+			{
+				//name of the plugin
+				"name": "DolphinPlugin",
+				// which plugin implementations to use. Everything defaults to false, if not explicitly set to a truthy value.
+				"appname": true,
+				"tags": true
+			},
+			//use just the name of the plugin to use all of its implementations as usual
+			"LocalGridPlugin",
+			"ConsoleGridPlugin"
+		],
 		// "plugins": ["DolphinPlugin","LocalGridPlugin","ConsoleGridPlugin"],
 		"ignore": [],
 		"extra": {
