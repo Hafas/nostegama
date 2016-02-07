@@ -7,8 +7,9 @@ var request=require("request");
 var LOG=require("../lib/Logger");
 
 var DolphinPlugin=function DolphinPlugin(params){
+	LOG.trace("DolphinPlugin");
 	params=params || {};
-	profile=params.profile || {};
+	var profile=params.profile || {};
 	var pluginData=profile.dolphin || {};
 	this.useDeveloperAsTag=!!pluginData.useDeveloperAsTag;
 	this.usePublisherAsTag=!!pluginData.usePublisherAsTag;

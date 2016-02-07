@@ -10,6 +10,7 @@ var tmp=require("tmp");
 var LOG=require("../lib/Logger");
 
 var ConsoleGridPlugin=function ConsoleGridPlugin(params){
+	LOG.trace("ConsoleGridPlugin");
 	params=params || {};
 	this.file=params.file;
 };
@@ -130,7 +131,7 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
 		],function(err,filepath){
 			gridFilepath=filepath;
 			if(err){
-				LOG.error(i18n.__("An error occured while trying to fetch a grid image vom Consolegrid. Reason: %s",String(err)))
+				LOG.error(i18n.__("An error occured while trying to fetch a grid image from Consolegrid. Reason: %s",String(err)))
 			}
 			callback();
 		});

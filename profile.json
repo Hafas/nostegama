@@ -14,11 +14,9 @@
 
     //optional. List of tags applied to all games.
     "tags": ["Wii"],
-    //optional, the path where local grids are stored. The file name of a grid must be same as the game's name.
-    "gridDir": "D:\\Pictures\\Grids\\", //TODO: Not yet implemented
 
     //optional. The names of the plugins that should process a game's file to fill undefined values.
-    "plugins": ["DolphinPlugin","ConsoleGridPlugin"],
+    "plugins": ["DolphinPlugin","LocalGridPlugin","ConsoleGridPlugin"],
     //list of file names or globs of games to ignore
     "ignore": [],
     //optional. additional information to each game
@@ -36,6 +34,9 @@
 
 		//The DefaultPlugin uses the optional 'command'-property to generate the command Steam will later use (if an other plugin didn't already). $e is the executable. $f is the path to the file the executable should open. DefaultPlugin uses "$e $f" if command is not set. DolphinPlugin sets this property to "$e --batch --exec=$f", so you won't have to set it yourself
 		// "command": "$e --batch --exec=$f",
+
+		//The LocalGridPlugin will use this property to come up with a grid image from a local storage. The grid's image should have the same name as the file of the game.
+    "gridDir": "D:\\Games\\Wii\\Meta\\Grids\\",
 
 		//The DefaultPlugin will use the optional 'defaultGrid'-property to set a default grid to a game, when no other plugin could provide a grid image.
 		"defaultGrid": "D:\\Games\\Wii\\Meta\\Grids\\default.png",
@@ -59,7 +60,7 @@
     "tags": ["Wii"],
     "gridDir": "D:\\Pictures\\Grids\\",
 
-    "plugins": ["DolphinPlugin","ConsoleGridPlugin"],
+    "plugins": ["DolphinPlugin","LocalGridPlugin","ConsoleGridPlugin"],
     "ignore": [],
     "extra": {
       "RMCP01.wbfs": {
@@ -67,6 +68,7 @@
         "tags": ["Mario","Arcade Racing","favorite"]
       }
     },
+		"gridDir": "D:\\Games\\Wii\\Meta\\Grids\\",
 		"defaultGrid": "D:\\Games\\Wii\\Meta\\Grids\\default.png",
 		"dolphin": {
 			"useDeveloperAsTag": true,
