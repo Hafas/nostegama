@@ -19,7 +19,16 @@ var AbstractPlugin=function(params){
  */
 
 /**
- * getAppname(callback)
+ * before(callback)
+ * This function is called before any other plugin-method if implemented.
+ * callback: The callback. When returning a truthy value in its first argument (an Error) all other plugin operations will be skipped
+ */
+AbstractPlugin.prototype.before=function(callback){
+	callback(null);
+};
+
+/**
+ * getAppname(params,callback)
  * callback: The callback. Returns the appname in its 2nd argument.
  */
 AbstractPlugin.prototype.getAppname=function(params,callback){
@@ -27,7 +36,7 @@ AbstractPlugin.prototype.getAppname=function(params,callback){
 };
 
 /**
- * getExe(callback)
+ * getExe(params,callback)
  * callback: The callback. Returns the command that Steam will run in its 2nd argument.
  */
 AbstractPlugin.prototype.getExe=function(params,callback){
@@ -35,7 +44,7 @@ AbstractPlugin.prototype.getExe=function(params,callback){
 };
 
 /**
- * getStartDir(callback)
+ * getStartDir(params,callback)
  * callback: The callback. Returns the working directory of the executable in its 2nd argument.
  */
 AbstractPlugin.prototype.getStartDir=function(params,callback){
@@ -43,7 +52,7 @@ AbstractPlugin.prototype.getStartDir=function(params,callback){
 };
 
 /**
- * getIcon(callback)
+ * getIcon(params,callback)
  * callback: The callback. Returns a path to an icon-file in its 2nd argument.
  */
 AbstractPlugin.prototype.getIcon=function(params,callback){
@@ -51,7 +60,7 @@ AbstractPlugin.prototype.getIcon=function(params,callback){
 };
 
 /**
- * getShortcutPath(callback)
+ * getShortcutPath(params,callback)
  * callback: The callback.
  */
 AbstractPlugin.prototype.getShortcutPath(params,callback){
@@ -59,7 +68,7 @@ AbstractPlugin.prototype.getShortcutPath(params,callback){
 };
 
 /**
- * getTags(callback)
+ * getTags(params,callback)
  * callback: The callback. Returns an array of tags in its 2nd argument.
  */
 AbstractPlugin.prototype.getTags=function(params,callback){
@@ -67,7 +76,7 @@ AbstractPlugin.prototype.getTags=function(params,callback){
 };
 
 /**
- * getGrid(callback)
+ * getGrid(params,callback)
  * callback: The callback. Returns the path to a grid image in its 2nd argument.
  */
 AbstractPlugin.prototype.getGrid=function(params,callback){

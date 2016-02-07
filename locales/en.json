@@ -33,5 +33,7 @@
 	"Writing to %s's shortcuts.vdf": "Writing to %s's shortcuts.vdf",
 	"No grid image on Consolgrid found for %s": "No grid image on Consolgrid found for %s",
 	"No page on Dolphin's Wiki found for %s": "No page on Dolphin's Wiki found for %s",
-	"No grid image on Consolgrid found with '%s'": "No grid image on Consolgrid found with '%s'"
+	"No grid image on Consolgrid found with '%s'": "No grid image on Consolgrid found with '%s'",
+	"Plugin '%s' failed. Reason: %s": "Plugin '%s' failed. Reason: %s",
+	"Done processing file '%s'.": "Done processing file '%s'."
 }

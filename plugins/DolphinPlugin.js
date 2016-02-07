@@ -1,9 +1,10 @@
 var cheerio=require("cheerio");
-var deasync=require("deasync");
 var i18n=require("i18n");
+var ono=require("ono");
 var path=require("path");
 var request=require("request");
 
+var DefaultPlugin=require("../lib/DefaultPlugin");
 var LOG=require("../lib/Logger");
 
 var DolphinPlugin=function DolphinPlugin(params){
@@ -18,49 +19,34 @@ var DolphinPlugin=function DolphinPlugin(params){
 	this.useModesAsTag=!!pluginData.useModesAsTag;
 	this.useInputMethodAsTag=!!pluginData.useInputMethodAsTag;
 
-	this.wikiBody=fetchWikiBody.call(this,path.parse(params.file).name);
-	//if command isn't explicitly set, set the command. The DefaultPlugin will handle the rest
-	if(!profile.command){
-		profile.command="$e --batch --exec=$f";
-	}
+	this.file=params.file;
+	this.exe=profile.exe;
 };
 
 var WIKI_URL="https://wiki.dolphin-emu.org/index.php?search=";
-var fetchWikiBody=function(searchInput){
-	var wikiBody=undefined;
-	var error=null;
-	var done=false;
-
+DolphinPlugin.prototype.before=function(callback){
+	var searchInput;
+	try{
+		searchInput=path.parse(this.file).name;
+	}catch(e){
+		return callback && callback(e);
+	}
 	var self=this;
-
 	request(WIKI_URL+encodeURIComponent(searchInput),function(err,response,body){
 		if(err){
-			error=err;
-			done=true;
-			return;
+			return callback && callback(err);
 		}
-		if(response.request.uri.query.indexOf("title=")===0){
-			wikiBody=cheerio.load(body);
+		if(response.request.uri.query.indexOf("title")===0){
+			self.wikiBody=cheerio.load(body);
 		}else{
-			LOG.debug(i18n.__("No page on Dolphin's Wiki found for %s",searchInput));
+			return callback && callback(ono(i18n.__("No page on Dolphin's Wiki found for %s",searchInput)));
 		}
-		done=true;
+		callback && callback();
 	});
-
-	while(!done){
-		deasync.runLoopOnce();
-	}
-	if(error){
-		throw error;
-	}
-	return wikiBody;
 };
 
 DolphinPlugin.prototype.getAppname=function(params,callback){
 	var $=this.wikiBody;
-	if(!$){
-		return callback && callback();
-	}
 	var appname=null;
 	var title=$("#firstHeading");
 	if(title.length>0){
@@ -68,13 +54,14 @@ DolphinPlugin.prototype.getAppname=function(params,callback){
 	}
 	return callback && callback(null,appname);
 };
-// adf
+
+DolphinPlugin.prototype.getExe=function(params,callback){
+	DefaultPlugin.prototype.getExe.call({exe: this.exe, file: this.file, command: "$e --batch --exec=$f"},{},callback);
+};
+
 var SPLIT_PATTERN=/\s*,\s*/;
 DolphinPlugin.prototype.getTags=function(params,callback){
 	var $=this.wikiBody;
-	if(!$){
-		return callback && callback();
-	}
 	var self=this;
 	var tags=[];
 	var infoBoxEntries=$(".infobox.vevent td");
@@ -95,6 +82,6 @@ DolphinPlugin.prototype.getTags=function(params,callback){
 		tags=null;
 	}
 	return callback && callback(null,tags);
-}
+};
 
 module.exports=DolphinPlugin;
