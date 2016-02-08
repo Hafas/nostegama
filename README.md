@@ -50,7 +50,7 @@ The first (and as of now only) profile-type for Nostegma is an emulator profile.
 ```
 This profile tells Nostegma to create for each file it finds in the directory `dir` a Shortcut in Steam to the executable `exe` with the arguments provided in `command`.
 
-For more options and flexibility check the [Profile](#profile) and  the [Plugins](#plugins) chapter below.
+For more options and flexibility check the [Profile](#profile) and  the [Plugins](#plugins) chapters below.
 
 ### Start Nostegma
 
@@ -58,7 +58,55 @@ Start Nostegma by entering `npm start` into the command line.
 
 ## Profile
 
-TODO
+### Emulator profile
+
+An emulator profile has the following options:
+
+* `exe`:  *mandatory* The path to the executable of the emulator. Can be relative to the profile file.
+* ROMs by glob
+  * `glob`  *mandatory* A [glob](https://www.npmjs.com/package/glob) pattern (e.g. ` "D:\\Games\\Wii\\**\\*.(iso|wbfs)"`)
+* ROMs by dir (will be ignored when `glob` is set)
+  * `dir`:  *mandatory* The directory where the ROMs can be found
+  * `recursive`:  *optional*  If Nostegma should search for ROMs recursively (`true`/`false`)
+  * `extensions`: *optional*  An array of extensions Nostegma should consider when searching for ROMs (e.g. `["iso","wbfs"]`)
+* `ignore`: *optional*  A glob pattern or an array of glob pattern to use to ignore ROMs
+* `tags`: *optional*  An array of tags Nostegma should add to each game (e.g. `["Wii"]`)
+* `plugins`:  *optional* An array of [plugins](#plugins) to use while processing ROMs.
+* `extra`:  *optional* Extra properties to apply to a specific ROM. Plugins won't be able to alter these properties.
+  * `appname`:  The name of the ROM that should be displayed on Steam
+  * `exe`:  The command to use to run this ROM
+  * `StartDir`: The working directory of the `exe`
+  * `icon`: Path to a file that should serve as an icon for the ROM
+  * `tags`: An array of tags to add to this ROM
+  * `grid`: Path to a file that should serve as a grid image for this ROM
+* Additional options for [plugins](#plugins)
+
+Example:
+```js
+{
+  "Dolphin": {
+    "exe": "D:\\Software\\Dolphin\\Dolphin.exe",
+    "glob": "D:\\Games\\Wii\\**\\*.(iso|wbfs)",
+    "tags": ["Wii"],
+    "plugins": ["DolphinPlugin","LocalGridPlugin","ConsoleGridPlugin"],
+    "extra": {
+      "RMCP01.wbfs": {
+        "appname": "Mario Kart Wii",
+        "tags": ["Mario","Racing","favorite"]
+      }
+    },
+    //used by LocalGridPlugin
+    "gridDir": "D:\\Games\\Wii\\Meta\\Grids",
+    //used by DefaultPlugin
+    "defaultGrid": "D:\\Games\\Wii\\Meta\\Grids\\default.png",
+    //used by DolphinPlugin
+    "dolphin": {
+      "useGenresAsTag": true,
+      "useInputMethodAsTag": true
+    }
+  }
+}
+```
 
 ## Plugins
 
