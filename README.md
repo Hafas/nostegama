@@ -2,7 +2,7 @@
 
 ## What is Nostegma?
 
-Nostegma is a __No__n-__Ste__am __G__ame __Ma__nager<!--__--> - managing your Non-Steam Games using the command-line interface. It's purpose and goal is to add shortcuts of your Non-Steam Games into your Steam's library; and that without to dictate to you how to organize your games.
+Nostegma is a <b>No</b>n-<b>Ste</b>am <b>G</b>ame <b>Ma</b>nager managing your Non-Steam Games using the command-line interface. It's purpose and goal is to add shortcuts of your Non-Steam Games into your Steam's library; and that without to dictate to you how to organize your games.
 
 ## Installation
 
