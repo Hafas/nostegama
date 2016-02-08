@@ -40,7 +40,7 @@ The first (and as of now only) profile-type for Nostegma is an emulator profile.
 }
 ```
 
-For more flexibility check the Profile-Chapter below.
+For more flexibility check the [Profile](#profile) chapter below.
 
 ### Start Nostegma
 
