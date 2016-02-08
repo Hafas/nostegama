@@ -30,13 +30,13 @@
     "url": "https://github.com/Hafas/nostegma.git"
   },
   "files": [
+    "bin/"
     "lib/",
     "locales/",
     "plugins/",
     "config.json",
     "LICENSE",
     "log4js.json",
-    "Nostegma.js",
     "README.md"
   ],
   "author": "Theodor Hafas",
