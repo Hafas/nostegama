@@ -48,7 +48,7 @@ The first (and as of now only) profile-type for Nostegma is an emulator profile.
   */
 }
 ```
-This profile tells Nostegma to create for each file it finds in the directory `dir` a Shortcut in Steam to the executable `exe` with the arguments provided in `command`.
+This profile tells Nostegma to create for each file it finds in the directory `dir` a shortcut in Steam to the executable `exe` with the arguments provided in `command`.
 
 For more options and flexibility check the [Profile](#profile) and  the [Plugins](#plugins) chapters below.
 
