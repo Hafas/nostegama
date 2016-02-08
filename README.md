@@ -64,6 +64,10 @@ TODO
 
 TODO
 
+### DefaultPlugin
+
+TODO
+
 ### ConsoleGridPlugin
 
 TODO
@@ -80,7 +84,7 @@ TODO
 
 The `config.json` file and the command line interface are offering you options to configure Nostegma. The `config.json` file will override the default options. Options passed to the command line interface will override both the default options and the options provided by the `config.json` file.
 
-To use the command line interface use this syntax:
+To use the command line options use this syntax:
 
 `npm start -- <option>[=value] [...]`
 
@@ -130,9 +134,13 @@ cli:
 
 Nostegma will usually output informations and errors both into the console and into the operating system's temporary director (`<tmp>/nostegma/logs`).
 
-## Plugins
+### Other
 
-TODO
+`-i <file>` `--input=<file>` to use an other profile file instead of the default `profile.json` file
+
+`-o` `--overwrite` Nostegma usually complements its own to the shortcuts to the existing ones. This option will discard all existing shortcuts.
+
+`-h` `--help` lists all cli options
 
 ## Plans for 0.1.0
 
