@@ -64,10 +64,10 @@ An emulator profile has the following options:
 
 * `exe`:  *mandatory* The path to the executable of the emulator. Can be relative to the profile file.
 * ROMs by glob
-  * `glob`  *mandatory* A [glob](https://www.npmjs.com/package/glob) pattern (e.g. ` "D:\\Games\\Wii\\**\\*.(iso|wbfs)"`)
+  * `glob`  *mandatory* A [glob](https://www.npmjs.com/package/glob) pattern (e.g. ` "D:\\Games\\Wii\\**\\*.@(iso|wbfs)"`)
 * ROMs by dir (will be ignored when `glob` is set)
   * `dir`:  *mandatory* The directory where the ROMs can be found
-  * `recursive`:  *optional*  If Nostegma should search for ROMs recursively (`true`/`false`)
+  * `recursive`:  *optional*  If Nostegma should search for ROMs recursively. Default `false`.
   * `extensions`: *optional*  An array of extensions Nostegma should consider when searching for ROMs (e.g. `["iso","wbfs"]`)
 * `ignore`: *optional*  A glob pattern or an array of glob pattern to use to ignore ROMs
 * `tags`: *optional*  An array of tags Nostegma should add to each game (e.g. `["Wii"]`)
@@ -86,7 +86,7 @@ Example:
 {
   "Dolphin": {
     "exe": "D:\\Software\\Dolphin\\Dolphin.exe",
-    "glob": "D:\\Games\\Wii\\**\\*.(iso|wbfs)",
+    "glob": "D:\\Games\\Wii\\**\\*.@(iso|wbfs)",
     "tags": ["Wii"],
     "plugins": ["DolphinPlugin","LocalGridPlugin","ConsoleGridPlugin"],
     "extra": {
