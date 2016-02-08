@@ -30,7 +30,7 @@
     "url": "https://github.com/Hafas/nostegma.git"
   },
   "files": [
-    "bin/"
+    "bin/",
     "lib/",
     "locales/",
     "plugins/",
