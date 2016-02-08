@@ -37,10 +37,20 @@ The first (and as of now only) profile-type for Nostegma is an emulator profile.
     //The command for the emulator ($e) to open the ROM-File ($f)
     "command": "$e --batch --exec=$f"
   }
+  //add more profiles here
+  /*
+  ,
+  "2nd Profile": {
+    "exe": "...",
+    "dir": "...",
+    "command": "..."
+  }
+  */
 }
 ```
+This profile tells Nostegma to create for each file it finds in the directory `dir` a Shortcut in Steam to the executable `exe` with the arguments provided in `command`.
 
-For more flexibility check the [Profile](#profile) chapter below.
+For more options and flexibility check the [Profile](#profile) and  the [Plugins](#plugins) chapter below.
 
 ### Start Nostegma
 
