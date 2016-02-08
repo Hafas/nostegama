@@ -40,7 +40,7 @@ var COMMON_REPLACERS=[
   {"replace": /\bXV\b/g, "with": "15"}
 ];
 
-//TODO acquire grid via API when user specifies the console in the package.json
+//TODO acquire grid via API when user specifies the console in the profile.json
 
 ConsoleGridPlugin.prototype.getGrid=function(params,callback){
   var searchInputsToTry=[];

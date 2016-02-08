@@ -1,16 +1,16 @@
-var GlobalConfiguration=require("./lib/GlobalConfiguration");
+var GlobalConfiguration=require("../lib/GlobalConfiguration");
 
 var Async=require("async");
 var i18n=require("i18n");
 
-var Backup=require("./lib/Backup");
-var Errors=require("./lib/Errors");
-var LOG=require("./lib/Logger");
-var ProfileController=require("./lib/ProfileController");
-var Prompts=require("./lib/Prompts");
+var Backup=require("../lib/Backup");
+var Errors=require("../lib/Errors");
+var LOG=require("../lib/Logger");
+var ProfileController=require("../lib/ProfileController");
+var Prompts=require("../lib/Prompts");
 var ShortcutCollection=require("node-steam-shortcuts").ShortcutCollection;
-var TemporaryTracker=require("./lib/TemporaryTracker");
-var Userdata=require("./lib/Userdata");
+var TemporaryTracker=require("../lib/TemporaryTracker");
+var Userdata=require("../lib/Userdata");
 
 Async.series([
   function(callback){

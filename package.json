@@ -1,6 +1,6 @@
 {
   "name": "nostegma",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Nostegma - A Non-Steam Game Manager",
   "dependencies": {
     "async": "^1.5.2",
@@ -22,6 +22,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node bin/Nostegma.js",
     "test": "mocha"
   },
   "repository": {
