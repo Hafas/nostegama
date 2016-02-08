@@ -76,7 +76,7 @@ An emulator profile has the following options:
   * `appname`:  The name of the ROM that should be displayed on Steam
   * `exe`:  The command to use to run this ROM
   * `StartDir`: The working directory of the `exe`
-  * `icon`: Path to a file that should serve as an icon for the ROM
+  * `icon`: Path to a file that should serve as an icon for this ROM
   * `tags`: An array of tags to add to this ROM
   * `grid`: Path to a file that should serve as a grid image for this ROM
 * Additional options for [plugins](#plugins)
