@@ -2,7 +2,7 @@
 
 ## What is Nostegma?
 
-Nostegma is a <b>No</b>n-<b>Ste</b>am <b>G</b>ame <b>Ma</b>nager managing your Non-Steam Games using the command-line interface. It's purpose and goal is to add shortcuts of your Non-Steam Games into your Steam's library; and that without to dictate to you how to organize your games.
+Nostegma is a <b>No</b>n-<b>Ste</b>am <b>G</b>ame <b>Ma</b>nager managing your Non-Steam Games using the command-line interface. It's purpose and goal is to add shortcuts of your Non-Steam Games into your [Steam](http://store.steampowered.com/)'s library; and that without to dictate to you how to organize your games.
 
 ## Installation
 
@@ -54,24 +54,29 @@ For more options and flexibility check the [Profile](#profile) and  the [Plugins
 
 ### Start Nostegma
 
-Start Nostegma by entering `npm start`
+Start Nostegma by entering `npm start` into the command line.
 
 ## Configuration
 
-TODO
+The `config.json` file and the command line interface are offering you options to configure Nostegma. The `config.json` file will override the default options. Options passed to the command line interface will override both the default options and the options provided by the `config.json` file.
 
-### General
+To use the command line interface use this syntax:
 
-TODO
+`npm start -- <option>[=value] [...]`
 
-### Profile
+### userdata
 
-TODO
+`config.json`:
+```json
+  "steam": {
+    "userdataDir": null
+  }
+```
+cli:
 
-### CLI
+`--userdata-dir=<path>`
 
-TODO
-
+The userdata directory is where Steam stores information of local users. If set to `null` Nostegma will try to figure its location by itself, which is usually `C:\Program Files (x86)\Steam\userdata` on Windows, `~/.local/share/Steam/userdata` on Linux and `~/Library/Application Support/Steam/userdata` on OSX. If Nostegma is unable to find the userdata directory you should manually set this value.
 ## Plugins
 
 TODO
