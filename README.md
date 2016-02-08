@@ -64,19 +64,39 @@ To use the command line interface use this syntax:
 
 `npm start -- <option>[=value] [...]`
 
-### userdata
+### Userdata
 
 `config.json`:
 ```json
-  "steam": {
-    "userdataDir": null
-  }
+"steam": {
+  "userdataDir": null
+}
 ```
 cli:
 
 `--userdata-dir=<path>`
 
 The userdata directory is where Steam stores information of local users. If set to `null` Nostegma will try to figure its location by itself, which is usually `C:\Program Files (x86)\Steam\userdata` on Windows, `~/.local/share/Steam/userdata` on Linux and `~/Library/Application Support/Steam/userdata` on OSX. If Nostegma is unable to find the userdata directory you should manually set this value.
+
+### Backup
+`config.json`:
+```json
+"backup": {
+  "shortcuts": true,
+  "grids": true,
+  "dir": null
+},
+```
+cli:
+
+`--no-backup` to not back up 
+
+`--backup-dir=<path>`
+
+Nostegma will usually backup the `shortcuts.vdf` file which stores the current shortcuts to the Non-Steam Games and the `grid` directory into the operating system's temporary folder (`<tmp>/nostegma/backups`)
+
+### Logs
+
 ## Plugins
 
 TODO
