@@ -192,6 +192,7 @@ Nostegma will usually output informations and errors both into the console and i
 
 ## Plans for 0.1.0
 
+* Tests
 * Simple game profile
 * Referencing profiles
 * I18N
