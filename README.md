@@ -56,6 +56,26 @@ For more options and flexibility check the [Profile](#profile) and  the [Plugins
 
 Start Nostegma by entering `npm start` into the command line.
 
+## Profile
+
+TODO
+
+## Plugins
+
+TODO
+
+### ConsoleGridPlugin
+
+TODO
+
+### DolphinPlugin
+
+TODO
+
+### LocalGridPlugin
+
+TODO
+
 ## Configuration
 
 The `config.json` file and the command line interface are offering you options to configure Nostegma. The `config.json` file will override the default options. Options passed to the command line interface will override both the default options and the options provided by the `config.json` file.
@@ -93,22 +113,24 @@ cli:
 
 `--backup-dir=<path>`
 
-Nostegma will usually backup the `shortcuts.vdf` file which stores the current shortcuts to the Non-Steam Games and the `grid` directory into the operating system's temporary folder (`<tmp>/nostegma/backups`)
+Nostegma will usually backup the `shortcuts.vdf` file which stores the current shortcuts to the Non-Steam Games and the `grid` directory into the operating system's temporary directory (`<tmp>/nostegma/backups`)
 
 ### Logs
+For logging there is one additional file `log4js.js` you might want to look into, if you want to customize the output. Check log4js' [Wiki](https://github.com/nomiddlename/log4js-node/wiki) for more information.
+`config.json`:
+```json
+"log": {
+  "appenders": ["console","nostegma"],
+  "dir": null
+}
+```
+cli:
+
+`--log-dir`
+
+Nostegma will usually output informations and errors both into the console and into the operating system's temporary director (`<tmp>/nostegma/logs`).
 
 ## Plugins
-
-TODO
-
-### ConsoleGridPlugin
-
-TODO
-
-### DolphinPlugin
-
-TODO
-### LocalGridPlugin
 
 TODO
 
@@ -122,3 +144,4 @@ TODO
 ## Plans for 1.0.0
 
 * GUI
+* More plugins
