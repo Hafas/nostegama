@@ -148,7 +148,7 @@ cli:
 
 `--userdata-dir=<path>`
 
-The userdata directory is where Steam stores information of local users. If set to `null` Nostegma will try to figure its location by itself, which is usually `C:\Program Files (x86)\Steam\userdata` on Windows, `~/.local/share/Steam/userdata` on Linux and `~/Library/Application Support/Steam/userdata` on OSX. If Nostegma is unable to find the userdata directory you should manually set this value.
+The userdata directory is where Steam stores information of local users. If set to `null` Nostegma will try to figure out its location by itself, which is usually `C:\Program Files (x86)\Steam\userdata` on Windows, `~/.local/share/Steam/userdata` on Linux and `~/Library/Application Support/Steam/userdata` on OSX. If Nostegma is unable to find the userdata directory you should manually set this value.
 
 ### Backup
 `config.json`:
