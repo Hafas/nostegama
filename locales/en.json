@@ -41,5 +41,6 @@
 	"Reading from shortcuts.vdf of '%s'": "Reading from shortcuts.vdf of '%s'",
 	"Deleting temporary files ...": "Deleting temporary files ...",
 	"Nothing to do.": "Nothing to do.",
-	"Processing '%s' [:bar] :current/:total :etas": "Processing '%s' [:bar] :current/:total :etas"
+	"Processing '%s' [:bar] :current/:total :etas": "Processing '%s' [:bar] :current/:total :etas",
+	"No default grid directory provided!": "No default grid directory provided!"
 }

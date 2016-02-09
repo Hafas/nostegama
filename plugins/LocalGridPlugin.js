@@ -21,10 +21,14 @@ var LocalGridPlugin=function LocalGridPlugin(params){
 LocalGridPlugin.prototype=Object.create(AbstractPlugin.prototype);
 LocalGridPlugin.prototype.constructor=LocalGridPlugin;
 
-LocalGridPlugin.prototype.getGrid=function(params,callback){
+LocalGridPlugin.prototype.before=function(callback){
   if(!this.gridDir){
-    return callback && callback();
+    return callback && callback(ono(i18n.__("No default grid directory provided!")));
   }
+  callback && callback();
+};
+
+LocalGridPlugin.prototype.getGrid=function(params,callback){
   var fileName=path.parse(this.file).name;
   var pattern=path.join(this.gridDir,"**",fileName+".@(png|jpg|jpeg|tiff)");
   LOG.debug("LocalGridPlugin.getGrid","pattern",pattern);

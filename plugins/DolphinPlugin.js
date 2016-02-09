@@ -43,6 +43,8 @@ DolphinPlugin.prototype.before=function(callback){
     LOG.debug("DolphinPlugin.before","statusCode",response.statusCode);
     if(response.statusCode===404){
       LOG.error(i18n.__("No page on Dolphin's Wiki found for %s",searchInput));
+      self.getAppname=null;
+      self.getTags=null;
       //Don't return error or else functions not depending on this wiki (like the exe in this case) won't get executed
       return callback && callback();
     }
@@ -53,9 +55,6 @@ DolphinPlugin.prototype.before=function(callback){
 
 DolphinPlugin.prototype.getAppname=function(params,callback){
   var $=this.wikiBody;
-  if(!$){
-    return callback && callback();
-  }
   var appname=null;
   var title=$("#firstHeading");
   if(title.length>0){
@@ -71,9 +70,6 @@ DolphinPlugin.prototype.getExe=function(params,callback){
 var SPLIT_PATTERN=/\s*,\s*/;
 DolphinPlugin.prototype.getTags=function(params,callback){
   var $=this.wikiBody;
-  if(!$){
-    return callback && callback();
-  }
   var self=this;
   var tags=[];
   var infoBoxEntries=$(".infobox.vevent td");
