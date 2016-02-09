@@ -169,6 +169,7 @@ Nostegma will usually backup the `shortcuts.vdf` file which stores the current s
 
 ### Logs
 For logging there is one additional file `log4js.js` you might want to look into, if you want to customize the output. Check log4js' [Wiki](https://github.com/nomiddlename/log4js-node/wiki) for more information.
+
 `config.json`:
 ```json
 "log": {
