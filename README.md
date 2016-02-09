@@ -23,7 +23,7 @@ This application hasn't been tested on Linux or OSX yet, but the code is mostly 
 
 ### Create a profile
 
-The first (and as of now only) profile-type for Nostegma is an emulator profile. Profiles are defined in the `profile.json` file and must be formed in [JSON](http://www.json.org/) (comments allowed). A minimal emulator profile might look like that:
+The first (and as of now only) profile-type for Nostegma is an [emulator profile](#emulator-profile). Profiles are defined in the `profile.json` file and must be formed in [JSON](http://www.json.org/) (comments allowed). A minimal emulator profile might look like that:
 
 ```js
 //minimal emulator example
@@ -148,7 +148,7 @@ cli:
 
 `--userdata-dir=<path>`
 
-The userdata directory is where Steam stores information of local users. If set to `null` Nostegma will try to figure its location by itself, which is usually `C:\Program Files (x86)\Steam\userdata` on Windows, `~/.local/share/Steam/userdata` on Linux and `~/Library/Application Support/Steam/userdata` on OSX. If Nostegma is unable to find the userdata directory you should manually set this value.
+The userdata directory is where Steam stores information of local users. If set to `null` Nostegma will try to figure out its location by itself, which is usually `C:\Program Files (x86)\Steam\userdata` on Windows, `~/.local/share/Steam/userdata` on Linux and `~/Library/Application Support/Steam/userdata` on OSX. If Nostegma is unable to find the userdata directory you should manually set this value.
 
 ### Backup
 `config.json`:
@@ -169,6 +169,7 @@ Nostegma will usually backup the `shortcuts.vdf` file which stores the current s
 
 ### Logs
 For logging there is one additional file `log4js.js` you might want to look into, if you want to customize the output. Check log4js' [Wiki](https://github.com/nomiddlename/log4js-node/wiki) for more information.
+
 `config.json`:
 ```json
 "log": {
@@ -186,7 +187,7 @@ Nostegma will usually output informations and errors both into the console and i
 
 `-i <file>` `--input=<file>` to use an other profile file instead of the default `profile.json` file
 
-`-o` `--overwrite` Nostegma usually complements its own to shortcuts to the existing ones. This option will discard all existing shortcuts.
+`-o` `--overwrite` Nostegma usually complements its own shortcuts to the existing ones. This option will discard all existing shortcuts.
 
 `-h` `--help` lists all cli options
 
