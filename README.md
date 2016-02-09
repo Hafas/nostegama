@@ -138,7 +138,7 @@ If you want to use a plugin only partially, you can define which properties each
   //[...]
 ```
 
-Now the [`DolphinPlugin`](#dolphinplugin) won't add any tags to games. Everything else behaves as usual.
+Now the [`DolphinPlugin`](#dolphinplugin) won't add any tags to games. Everything else behaves as before.
 
 ### DefaultPlugin
 
