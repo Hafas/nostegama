@@ -23,7 +23,7 @@ This application hasn't been tested on Linux or OSX yet, but the code is mostly 
 
 ### Create a profile
 
-The first (and as of now only) profile-type for Nostegma is an emulator profile. Profiles are defined in the `profile.json` file and must be formed in [JSON](http://www.json.org/) (comments allowed). A minimal emulator profile might look like that:
+The first (and as of now only) profile-type for Nostegma is an [emulator profile](#emulator-profile). Profiles are defined in the `profile.json` file and must be formed in [JSON](http://www.json.org/) (comments allowed). A minimal emulator profile might look like that:
 
 ```js
 //minimal emulator example
