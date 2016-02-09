@@ -110,23 +110,95 @@ Example:
 
 ## Plugins
 
-TODO
+A plugin's job is to complete a Non-Steam Game's properties, that weren't provided by the user in `extra`. If a plugin is not able or not designed to provide a specific property, the next plugin in line will try its luck. If everything fails the [`DefaultPlugin`](#defaultplugin) will use default values to fill in the necessary blanks.
+
+Example:
+```js
+  //[...]
+  "plugins": ["DolphinPlugin","LocalGridPlugin","ConsoleGridPlugin"],
+  //[...]
+```
+First the [`DolphinPlugin`](#dolphinplugin) will be used to fill in the properties `appname`, `exe` and `tags`, then the [`LocalGridPlugin`](#localgridplugin) will try to find a `grid` for the game. If no fitting grid image is found, the [`ConsoleGridPlugin`](#consolegridplugin) will browse [consolegrid.com](consolegrid.com). The [`ConsoleGridPlugin`](#consolegridplugin) will eventually use the `appname` property gathered by the [`DolphinPlugin`](#dolphinplugin) as one of the search candidates, so the plugin order is important!
+
+Still no grid image found? The [`DefaultPlugin`](#defaultplugin) will then use the `defaultGrid` if provided.
+
+If you want to use a plugin only partially, you can define which properties each plugin should try to fetch:
+
+```js
+  //[...]
+  "plugins": [
+    {
+      "name": "DolphinPlugin",
+      "appname": true,
+      "exe": true
+    },
+    "LocalGridPlugin",
+    "ConsoleGridPlugin"
+  ],
+  //[...]
+```
+
+Now the [`DolphinPlugin`](#dolphinplugin) won't add any tags to games. Everything else behaves as usual.
 
 ### DefaultPlugin
 
-TODO
+This plugin will always be executed last, and doesn't need to be explicitly listed in the `plugins` property.
+
+Profile properties this plugin uses:
+* `command`:  *optional*  Default `"$e $f"`. `$e` will be replaced with the profile's executable's path (in double quotation marks) and `$f` with the ROM's path (also in double quotation marks).
+* `defaultGrid`:  *optional*
+
+Non-Steam Game properties this plugin uses: *none*
+
+Non-Steam Game properties this plugin delivers:
+* `appname`:  Returns the game's file name
+* `exe`:  Uses the profile property `command` to build this property
+* `StartDir`: Returns the directory of the profile's executable
+* `grid`: Uses the profile property `defaultGrid` and returns it
 
 ### ConsoleGridPlugin
 
-TODO
+This plugin browses [consolegrid.com](consolegrid.com) for a suitable grid image.
+
+Profile properties this plugin uses: *none*
+
+Non-Steam Game properties this plugin uses:
+* `appname`:  *optional*
+
+Non-Steam Game properties this plugin delivers:
+* `grid`: Uses the Non-Steam Game's `appname` and/or the file's name to download a grid image and return its path
 
 ### DolphinPlugin
 
-TODO
+This plugin will use the [Dolphin Wiki](https://wiki.dolphin-emu.org) to gather information.
+
+Profile properties this plugin uses:
+* `dolphin` *optional*
+  * `useDeveloperAsTag`: *optional*  Default `false`. Whether or not to add the game's developer to the tags
+  * `usePublisherAsTag`: *optional*  Default `false`. Whether or not to add the game's publisher to the tags
+  * `useSeriesAsTag`: *optional*  Default `false`. Whether or not to add the game's series to the tags
+  * `useGenresAsTag`: *optional*  Default `false`. Whether or not to add the game's genres to the tags
+  * `useModesAsTag`:  *optional*  Default `false`. Whether or not to add the game's modes to the tags
+  * `useInputMethodsAsTag`:  *optional*  Default `false`. Whether or not to add the game's input methods to the tags
+
+Non-Steam Game properties this plugin uses: *none*
+
+Non-Steam Game properties this plugin delivers:
+* `appname`:  Uses the title of the game's Wiki page
+* `exe`:  Uses [`DefaultPlugin`](#defaultplugin)'s implementation to build this property with `command="$e --batch --exec=$f"`
+* `tags`: Uses the info box of the game's Wiki page and the options of profile property `dolphin`
 
 ### LocalGridPlugin
 
-TODO
+This plugin will browse the local storage for a suitable grid image.
+
+Profile properties this plugin uses:
+* `gridDir`:  *mandatory* Path to a directory where the plugin should browse for grid images
+
+Non-Steam Game properties this plugin uses: *none*
+
+Non-Steam Game properties this plugin delivers:
+* `grid`: Returns the path of the grid image. The image's name needs to be the same as the name of the file and its extension has to be either `jpeg`, `jpg`, `png` or `tiff`.
 
 ## Configuration
 
@@ -161,7 +233,7 @@ The userdata directory is where Steam stores information of local users. If set 
 ```
 cli:
 
-`--no-backup` to not back up 
+`--no-backup` to not back up
 
 `--backup-dir=<path>`
 
@@ -196,8 +268,7 @@ Nostegma will usually output informations and errors both into the console and i
 * Tests
 * Simple game profile
 * Referencing profiles
-* I18N
-* Complete this README
+* L10N
 
 ## Plans for 1.0.0
 
