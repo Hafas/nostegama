@@ -265,10 +265,11 @@ Nostegma will usually output informations and errors both into the console and i
 
 ## Plans for 0.1.0
 
+* Is-Steam-running-detection
 * Tests
 * Simple game profile
 * Referencing profiles
-* L10N
+* german L10N
 
 ## Plans for 1.0.0
 
