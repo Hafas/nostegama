@@ -18,7 +18,7 @@ var LocalGridPlugin=function LocalGridPlugin(params){
   this.file=params.file;
 };
 
-LocalGridPlugin.prototype=Object.create(AbstractPlugin);
+LocalGridPlugin.prototype=Object.create(AbstractPlugin.prototype);
 LocalGridPlugin.prototype.constructor=LocalGridPlugin;
 
 LocalGridPlugin.prototype.getGrid=function(params,callback){

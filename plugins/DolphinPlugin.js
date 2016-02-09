@@ -18,7 +18,7 @@ var DolphinPlugin=function DolphinPlugin(params){
   this.useSeriesAsTag=!!pluginData.useSeriesAsTag;
   this.useGenresAsTag=!!pluginData.useGenresAsTag;
   this.useModesAsTag=!!pluginData.useModesAsTag;
-  this.useInputMethodAsTag=!!pluginData.useInputMethodAsTag;
+  this.useInputMethodsAsTag=!!pluginData.useInputMethodsAsTag;
 
   this.file=params.file;
   this.exe=profile.exe;
@@ -85,7 +85,7 @@ DolphinPlugin.prototype.getTags=function(params,callback){
         || (previousContent==="Series" && self.useSeriesAsTag)
         || (previousContent==="Genre(s)" && self.useGenresAsTag)
         || (previousContent==="Mode(s)" && self.useModesAsTag)
-        || (previousContent==="Input methods" && self.useInputMethodAsTag)){
+        || (previousContent==="Input methods" && self.useInputMethodsAsTag)){
       tags=tags.concat(content.split(SPLIT_PATTERN));
     }
     previousContent=content;
