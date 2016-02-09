@@ -54,7 +54,7 @@ For more options and flexibility check the [Profile](#profile) and  the [Plugins
 
 ### Start Nostegma
 
-Start Nostegma by entering `npm start` into the command line.
+Close the Steam Client first, then start Nostegma by entering `npm start` into the console.
 
 ## Profile
 
