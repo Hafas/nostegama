@@ -187,7 +187,7 @@ Nostegma will usually output informations and errors both into the console and i
 
 `-i <file>` `--input=<file>` to use an other profile file instead of the default `profile.json` file
 
-`-o` `--overwrite` Nostegma usually complements its own to shortcuts to the existing ones. This option will discard all existing shortcuts.
+`-o` `--overwrite` Nostegma usually complements its own shortcuts to the existing ones. This option will discard all existing shortcuts.
 
 `-h` `--help` lists all cli options
 
