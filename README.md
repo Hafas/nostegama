@@ -11,7 +11,7 @@ There is currently no easy way to install Nostegma.
 ### Windows
 
 * Download and install the latest Version of [NodeJS](https://nodejs.org/).
-* Download and unzip the current [source code](https://github.com/Hafas/nostegma/archive/v0.0.9.zip) of Nostegma
+* Download and unzip the current [source code](https://github.com/Hafas/nostegma/archive/master.zip) of Nostegma
 * Open the [PowerShell](https://en.wikipedia.org/wiki/Windows_PowerShell) (recommended) or [Command Prompt](https://en.wikipedia.org/wiki/Cmd.exe) and navigate to the directory where you unzipped Nostegma. A file named `package.json` should be in it.
 * Enter `npm install`
 
