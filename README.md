@@ -160,6 +160,8 @@ Non-Steam Game properties this plugin delivers:
 
 This plugin browses [consolegrid.com](consolegrid.com) for a suitable grid image.
 
+*The file name or the `appname` should be the game's name for this plugin to work properly.*
+
 Profile properties this plugin uses: *none*
 
 Non-Steam Game properties this plugin uses:
@@ -171,6 +173,8 @@ Non-Steam Game properties this plugin delivers:
 ### DolphinPlugin
 
 This plugin will use the [Dolphin Wiki](https://wiki.dolphin-emu.org) to gather information.
+
+*The file name should be either the game's GameID or the game's name for this plugin to work properly.*
 
 Profile properties this plugin uses:
 * `dolphin` *optional*
@@ -192,6 +196,8 @@ Non-Steam Game properties this plugin delivers:
 
 This plugin will browse the local storage for a suitable grid image.
 
+*The file name should equal the grid image's file name for this plugin to work properly.*
+
 Profile properties this plugin uses:
 * `gridDir`:  *mandatory* Path to a directory where the plugin should browse for grid images
 
@@ -199,6 +205,24 @@ Non-Steam Game properties this plugin uses: *none*
 
 Non-Steam Game properties this plugin delivers:
 * `grid`: Returns the path of the grid image. The image's name needs to be the same as the name of the file and its extension has to be either `jpeg`, `jpg`, `png` or `tiff`.
+
+### GameTDBPlugin
+
+This plugin will use [GameTDB](http://www.gametdb.com/) to gather information.
+
+*The file name should be the game's GameID for this plugin to work properly.*
+
+**This plugin is deliberately slow to avoid stressing the service**
+
+Profile properties this plugin uses:
+* `gameTDB` *mandatory*
+  * `platform`: *mandatory*  The platform should be either `GC`. `Wii`, `Wii U` or `PS3`
+  * `language`: *optional* Default `EN`. Abbreviation of a language GameTDB uses, such as `EN`, `DE`, `FR`, etc.
+
+Non-Steam Game properties this plugin uses: *none*
+
+Non-Steam Game properties this plugin delivers:
+* `appname`: Returns the game's name dependent on `language`. If there is no name for the given language. The english one will be used.
 
 ## Configuration
 
