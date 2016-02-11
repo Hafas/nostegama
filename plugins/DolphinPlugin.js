@@ -36,7 +36,9 @@ DolphinPlugin.prototype.before=function(callback){
     return callback && callback(e);
   }
   var self=this;
-  request(WIKI_URL+encodeURIComponent(searchInput),function(err,response,body){
+  var searchUrl=WIKI_URL+encodeURIComponent(searchInput);
+  LOG.debug("DolphinPlugin.before","searchUrl",searchUrl);
+  request(searchUrl,function(err,response,body){
     if(err){
       return callback && callback(err);
     }
