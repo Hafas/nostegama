@@ -2,7 +2,7 @@
 
 ## What is Nostegma?
 
-Nostegma is a <b>No</b>n-<b>Ste</b>am <b>G</b>ame <b>Ma</b>nager managing your Non-Steam Games using the command-line interface. It's purpose and goal is to add shortcuts of your Non-Steam Games into your [Steam](http://store.steampowered.com/)'s library; and that without to dictate to you how to organize your games.
+Nostegma is a <b>No</b>n-<b>Ste</b>am <b>G</b>ame <b>Ma</b>nager managing your Non-Steam Games using the command-line interface. It's purpose and goal is to add shortcuts of your Non-Steam Games into your [Steam](http://store.steampowered.com/)'s library.
 
 ## Installation
 
@@ -12,7 +12,7 @@ There is currently no easy way to install Nostegma.
 
 * Download and install the latest Version of [NodeJS](https://nodejs.org/).
 * Download and unzip the current [source code](https://github.com/Hafas/nostegma/archive/master.zip) of Nostegma
-* Open the [Command Prompt](https://en.wikipedia.org/wiki/Cmd.exe) or [PowerShell](https://en.wikipedia.org/wiki/Windows_PowerShell) and navigate to the directory where you unzipped Nostegma. A file named `package.json` should be in it.
+* Open the [PowerShell](https://en.wikipedia.org/wiki/Windows_PowerShell) (recommended) or [Command Prompt](https://en.wikipedia.org/wiki/Cmd.exe) and navigate to the directory where you unzipped Nostegma. A file named `package.json` should be in it.
 * Enter `npm install`
 
 ### Linux & OSX
@@ -54,7 +54,7 @@ For more options and flexibility check the [Profile](#profile) and  the [Plugins
 
 ### Start Nostegma
 
-Start Nostegma by entering `npm start` into the command line.
+Close the Steam Client first, then start Nostegma by entering `npm start` into the console.
 
 ## Profile
 
@@ -138,7 +138,7 @@ If you want to use a plugin only partially, you can define which properties each
   //[...]
 ```
 
-Now the [`DolphinPlugin`](#dolphinplugin) won't add any tags to games. Everything else behaves as usual.
+Now the [`DolphinPlugin`](#dolphinplugin) won't add any tags to games. Everything else behaves as before.
 
 ### DefaultPlugin
 
@@ -265,10 +265,11 @@ Nostegma will usually output informations and errors both into the console and i
 
 ## Plans for 0.1.0
 
+* Is-Steam-running-detection
 * Tests
 * Simple game profile
 * Referencing profiles
-* L10N
+* german L10N
 
 ## Plans for 1.0.0
 
