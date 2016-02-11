@@ -21,7 +21,10 @@
     "tmp": "0.0.28",
     "winreg": "0.0.16"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  },
   "scripts": {
     "start": "node bin/Nostegma.js",
     "test": "mocha"
