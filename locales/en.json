@@ -44,5 +44,6 @@
 	"Processing '%s' [:bar] :current/:total :etas": "Processing '%s' [:bar] :current/:total :etas",
 	"No default grid directory provided!": "No default grid directory provided!",
 	"No page on GameTDB found for %s": "No page on GameTDB found for %s",
-	"No or invalid platform provided!": "No or invalid platform provided!"
+	"No or invalid platform provided!": "No or invalid platform provided!",
+	"Processing '%s' [:bar] :current/:total :elapseds": "Processing '%s' [:bar] :current/:total :elapseds"
 }

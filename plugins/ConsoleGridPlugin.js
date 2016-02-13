@@ -9,6 +9,7 @@ var LOG=require("../lib/Logger");
 var ConsoleGridPlugin=function ConsoleGridPlugin(params){
   LOG.trace("ConsoleGridPlugin");
   params=params || {};
+  this.exe=params.exe;
   this.file=params.file;
 };
 
@@ -62,7 +63,7 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
       searchInputsToTry=searchInputsToTry.concat(splitAppname);
     }
   }
-  try{
+  if((typeof this.file)==="string"){
     var filename=path.parse(this.file).name
     searchInputsToTry.push(filename);
     var adjustedFilename=filename;
@@ -72,8 +73,16 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
         searchInputsToTry.push(adjustedFilename);
       }
     }
-  }catch(e){
-    LOG.debug("ConsoleGridPlugin.getGrid","Error:",e);
+  }else if((typeof this.exe)==="string"){
+    var filename=path.parse(this.exe).name
+    searchInputsToTry.push(filename);
+    var adjustedFilename=filename;
+    if(diacritics){
+      adjustedFilename=diacritics.remove(filename);
+      if(filename!==adjustedFilename){
+        searchInputsToTry.push(adjustedFilename);
+      }
+    }
   }
 
   var gridFilepath=null;

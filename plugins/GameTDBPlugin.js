@@ -39,6 +39,7 @@ function GameTDBPlugin(params){
   if((typeof pluginData.language)==="string"){
     this.language=pluginData.language.toUpperCase();
   }
+  this.exe=params.exe;
   this.file=params.file;
 }
 
@@ -52,10 +53,10 @@ var okToRequest=true;
 
 GameTDBPlugin.prototype.before=function(callback){
   var searchInput;
-  try{
+  if((typeof this.file)==="string"){
     searchInput=path.parse(this.file).name;
-  }catch(e){
-    return callback(e);
+  }else{
+    return callback(ono(i18n.__("No file provided.")));
   }
   var self=this;
   Async.whilst(function(){

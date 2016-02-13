@@ -16,6 +16,7 @@ var LocalGridPlugin=function LocalGridPlugin(params){
     this.gridDir=path.resolve(params.cwd,gridDir);
   }
   this.file=params.file;
+  this.exe=params.exe;
 };
 
 LocalGridPlugin.prototype=Object.create(AbstractPlugin.prototype);
@@ -29,7 +30,15 @@ LocalGridPlugin.prototype.before=function(callback){
 };
 
 LocalGridPlugin.prototype.getGrid=function(params,callback){
-  var fileName=path.parse(this.file).name;
+  var fileName;
+  if((typeof this.file)==="string"){
+    fileName=path.parse(this.file).name;
+  }else if((typeof this.exe)==="string"){
+    fileName=path.parse(this.exe).name;
+  }
+  if(!fileName){
+    return callback();
+  }
   var pattern=path.join(this.gridDir,"**",fileName+".@(png|jpg|jpeg|tiff)");
   LOG.debug("LocalGridPlugin.getGrid","pattern",pattern);
   glob(pattern,function(err,files){

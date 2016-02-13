@@ -19,7 +19,7 @@ var DolphinPlugin=function DolphinPlugin(params){
   this.useInputMethodsAsTag=!!pluginData.useInputMethodsAsTag;
 
   this.file=params.file;
-  this.exe=profile.exe;
+  this.exe=params.exe;
 };
 
 DolphinPlugin.prototype=Object.create(AbstractPlugin.prototype);

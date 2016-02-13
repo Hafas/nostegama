@@ -7,14 +7,13 @@ var DolphinPlugin=require("../plugins/DolphinPlugin");
 
 describe("DolphinPlugin",function(){
   var profile={
-    "exe": "C:\\Something.exe",
     "dolphin": {
       "useGenresAsTag": true,
       "useInputMethodsAsTag": true
     }
   };
   it("sends a request to the dolphin wiki",function(done){
-    var plugin=new DolphinPlugin({profile: profile, file: "RMCP01.wbfs"});
+    var plugin=new DolphinPlugin({profile: profile, file: "RMCP01.wbfs", exe: "C:\\Something.exe"});
     Async.series([
       function(callback){
         plugin.before(callback);
