@@ -1,9 +1,7 @@
 var Async=require("async");
-var cheerio=require("cheerio");
 var i18n=require("i18n");
 var ono=require("ono");
 var path=require("path");
-var request=require("request");
 
 var AbstractPlugin=require("./AbstractPlugin");
 var LOG=require("../lib/Logger");
@@ -107,5 +105,18 @@ GameTDBPlugin.prototype.getAppname=function(params,callback){
   LOG.debug("GameTDBPlugin.getAppname","appname",appname || defaultAppname);
   callback(null,appname || defaultAppname);
 };
+
+//optional dependencies
+try{
+  var cheerio=require("cheerio");
+  var request=require("request");
+}catch(e){
+  LOG.error(e);
+}
+
+if(!cheerio || !request){
+  GameTDBPlugin.prototype.before=null;
+  GameTDBPlugin.prototype.getAppname=null;
+}
 
 module.exports=GameTDBPlugin;

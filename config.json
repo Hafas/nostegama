@@ -1,6 +1,6 @@
 {
   "steam": {
-    //the userdata directory. If null Nostegma will try to locate it automatically, but if it fails you may want to set this value manually
+    //the userdata directory. If null Nostegama will try to locate it automatically, but if it fails you may want to set this value manually
     "userdataDir": null
   },
   "backup": {
@@ -8,14 +8,14 @@
     "shortcuts": true,
     //whether or not to backup grids. Default true.
     "grids": true,
-    //where to store backups. Default is in %tmp%/nostegma/backups/
+    //where to store backups. Default is in %tmp%/nostegama/backups/
     "dir": null
   },
   //configuration for logging. See log4js.json for more options.
   "log": {
-    //which appenders described in log4js.json to use. Default is ["console","nostegma"]
-    "appenders": ["console","nostegma"],
-    //where to store the log files. Default is %tmp%/nostegma/logs/
+    //which appenders described in log4js.json to use. Default is ["console","nostegama"]
+    "appenders": ["console","nostegama"],
+    //where to store the log files. Default is %tmp%/nostegama/logs/
     "dir": null
   }
 }

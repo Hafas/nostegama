@@ -1,8 +1,6 @@
-var cheerio=require("cheerio");
 var i18n=require("i18n");
 var ono=require("ono");
 var path=require("path");
-var request=require("request");
 
 var AbstractPlugin=require("./AbstractPlugin");
 var DefaultPlugin=require("./DefaultPlugin");
@@ -93,5 +91,19 @@ DolphinPlugin.prototype.getTags=function(params,callback){
   }
   return callback && callback(null,tags);
 };
+
+//optional dependencies
+try{
+  var cheerio=require("cheerio");
+  var request=require("request");
+}catch(e){
+  LOG.error(e);
+}
+
+if(!cheerio || !request){
+  DolphinPlugin.prototype.before=null;
+  DolphinPlugin.prototype.getAppname=null;
+  DolphinPlugin.prototype.getTags=null;
+}
 
 module.exports=DolphinPlugin;

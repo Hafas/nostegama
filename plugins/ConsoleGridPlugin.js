@@ -1,11 +1,7 @@
 var Async=require("async");
-var cheerio=require("cheerio");
-var diacritics=require("diacritics");
 var fs=require("fs");
 var i18n=require("i18n");
 var path=require("path");
-var request=require("request");
-var tmp=require("tmp");
 
 var AbstractPlugin=require("./AbstractPlugin");
 var LOG=require("../lib/Logger");
@@ -47,18 +43,21 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
   if(params && params.nonSteamGame && params.nonSteamGame.appname){
     var appname=params.nonSteamGame.appname;
     searchInputsToTry.push(appname);
-    var appnameWithoutDiacritics=diacritics.remove(appname);
-    if(appname!==appnameWithoutDiacritics){
-      searchInputsToTry.push(appnameWithoutDiacritics);
+    var adjustedAppname=appname;
+    if(diacritics){
+      var adjustedAppname=diacritics.remove(appname);
+      if(appname!==adjustedAppname){
+        searchInputsToTry.push(adjustedAppname);
+      }
     }
     for(var i=0;i<COMMON_REPLACERS.length;++i){
       var replacer=COMMON_REPLACERS[i];
-      var replaced=appnameWithoutDiacritics.replace(replacer.replace,replacer.with);
-      if(replaced!==appnameWithoutDiacritics){
+      var replaced=adjustedAppname.replace(replacer.replace,replacer.with);
+      if(replaced!==adjustedAppname){
         searchInputsToTry.push(replaced);
       }
     }
-    var splitAppname=appnameWithoutDiacritics.split(/\s*:\s*/);
+    var splitAppname=adjustedAppname.split(/\s*:\s*/);
     if(splitAppname.length>1){
       searchInputsToTry=searchInputsToTry.concat(splitAppname);
     }
@@ -66,9 +65,12 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
   try{
     var filename=path.parse(this.file).name
     searchInputsToTry.push(filename);
-    var filenameWithoutDiacritics=diacritics.remove(filename);
-    if(filename!==filenameWithoutDiacritics){
-      searchInputsToTry.push(filenameWithoutDiacritics);
+    var adjustedFilename=filename;
+    if(diacritics){
+      adjustedFilename=diacritics.remove(filename);
+      if(filename!==adjustedFilename){
+        searchInputsToTry.push(adjustedFilename);
+      }
     }
   }catch(e){
     LOG.debug("ConsoleGridPlugin.getGrid","Error:",e);
@@ -128,7 +130,7 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
                 return;
               }
               callbackCalled=true;
-              //callback the path where where the grid image is. Nostegma will see to it, that it goes where it should.
+              //callback the path where where the grid image is. Nostegama will see to it, that it goes where it should.
               callback(null,tmpFilepath);
             }).on("pipe",function(){
               LOG.debug("Piping into %s",tmpFilepath);
@@ -149,5 +151,19 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
     callback && callback(null,gridFilepath);
   });
 };
+
+//optional dependencies
+try{
+  var cheerio=require("cheerio");
+  var diacritics=require("diacritics");
+  var request=require("request");
+  var tmp=require("tmp");
+}catch(e){
+  LOG.error(e);
+}
+
+if(!cheerio || !request || !tmp){
+  ConsoleGridPlugin.prototype.getGrid=null;
+}
 
 module.exports=ConsoleGridPlugin;

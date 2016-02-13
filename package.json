@@ -1,14 +1,11 @@
 {
-  "name": "nostegma",
+  "name": "nostegama",
   "version": "0.0.9",
-  "description": "Nostegma - A Non-Steam Game Manager",
+  "description": "Nostegama - A Non-Steam Game Manager",
   "dependencies": {
     "async": "^1.5.2",
-    "cheerio": "^0.20.0",
     "cli": "^0.11.1",
     "comment-json": "^1.1.3",
-    "deasync": "^0.1.4",
-    "diacritics": "^1.2.3",
     "fs-extra": "^0.26.5",
     "glob": "^6.0.4",
     "i18n": "^0.6.0",
@@ -16,7 +13,13 @@
     "node-steam-shortcuts": "^1.1.0",
     "ono": "^2.1.1",
     "progress": "^1.1.8",
-    "prompt": "^0.2.14",
+    "prompt": "^0.2.14"
+  },
+  "optionalDependencies": {
+    "cheerio": "^0.20.0",
+    "deasync": "^0.1.4",
+    "diacritics": "^1.2.3",
+    "edge": "^5.0.0",
     "request": "^2.69.0",
     "tmp": "0.0.28",
     "winreg": "0.0.16"
@@ -26,7 +29,7 @@
     "mocha": "^2.4.5"
   },
   "scripts": {
-    "start": "node bin/Nostegma.js",
+    "start": "node bin/Nostegama.js",
     "test": "mocha"
   },
   "repository": {

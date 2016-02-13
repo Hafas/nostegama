@@ -1,18 +1,18 @@
-# Nostegma
+# Nostegama
 
-## What is Nostegma?
+## What is Nostegama?
 
-Nostegma is a <b>No</b>n-<b>Ste</b>am <b>G</b>ame <b>Ma</b>nager managing your Non-Steam Games using the command-line interface. It's purpose and goal is to add shortcuts of your Non-Steam Games into your [Steam](http://store.steampowered.com/)'s library.
+Nostegama is a <b>No</b>n-<b>Ste</b>am <b>G</b>ame <b>Ma</b>nager managing your Non-Steam Games using the command-line interface. It's purpose and goal is to add shortcuts of your Non-Steam Games into your [Steam](http://store.steampowered.com/)'s library.
 
 ## Installation
 
-There is currently no easy way to install Nostegma.
+There is currently no easy way to install Nostegama.
 
 ### Windows
 
 * Download and install the latest Version of [NodeJS](https://nodejs.org/).
-* Download and unzip the current [source code](https://github.com/Hafas/nostegma/archive/master.zip) of Nostegma
-* Open the [PowerShell](https://en.wikipedia.org/wiki/Windows_PowerShell) (recommended) or [Command Prompt](https://en.wikipedia.org/wiki/Cmd.exe) and navigate to the directory where you unzipped Nostegma. A file named `package.json` should be in it.
+* Download and unzip the current [source code](https://github.com/Hafas/nostegma/archive/master.zip) of Nostegama
+* Open the [PowerShell](https://en.wikipedia.org/wiki/Windows_PowerShell) (recommended) or [Command Prompt](https://en.wikipedia.org/wiki/Cmd.exe) and navigate to the directory where you unzipped Nostegama. A file named `package.json` should be in it.
 * Enter `npm install`
 
 ### Linux & OSX
@@ -23,7 +23,7 @@ This application hasn't been tested on Linux or OSX yet, but the code is mostly 
 
 ### Create a profile
 
-The first (and as of now only) profile-type for Nostegma is an [emulator profile](#emulator-profile). Profiles are defined in the `profile.json` file and must be formed in [JSON](http://www.json.org/) (comments allowed). A minimal emulator profile might look like that:
+The first (and as of now only) profile-type for Nostegama is an [emulator profile](#emulator-profile). Profiles are defined in the `profile.json` file and must be formed in [JSON](http://www.json.org/) (comments allowed). A minimal emulator profile might look like that:
 
 ```js
 //minimal emulator example
@@ -48,13 +48,13 @@ The first (and as of now only) profile-type for Nostegma is an [emulator profile
   */
 }
 ```
-This profile tells Nostegma to create for each file it finds in the directory `dir` a shortcut in Steam to the executable `exe` with the arguments provided in `command`.
+This profile tells Nostegama to create for each file it finds in the directory `dir` a shortcut in Steam to the executable `exe` with the arguments provided in `command`.
 
 For more options and flexibility check the [Profile](#profile) and  the [Plugins](#plugins) chapters below.
 
-### Start Nostegma
+### Start Nostegama
 
-Close the Steam Client first, then start Nostegma by entering `npm start` into the console.
+Close the Steam Client first, then start Nostegama by entering `npm start` into the console.
 
 ## Profile
 
@@ -67,10 +67,10 @@ An emulator profile has the following options:
   * `glob`  *mandatory* A [glob](https://www.npmjs.com/package/glob) pattern (e.g. ` "D:\\Games\\Wii\\**\\*.@(iso|wbfs)"`)
 * ROMs by dir (will be ignored when `glob` is set)
   * `dir`:  *mandatory* The directory where the ROMs can be found
-  * `recursive`:  *optional*  If Nostegma should search for ROMs recursively. Default `false`.
-  * `extensions`: *optional*  An array of extensions Nostegma should consider when searching for ROMs (e.g. `["iso","wbfs"]`)
+  * `recursive`:  *optional*  If Nostegama should search for ROMs recursively. Default `false`.
+  * `extensions`: *optional*  An array of extensions Nostegama should consider when searching for ROMs (e.g. `["iso","wbfs"]`)
 * `ignore`: *optional*  A glob pattern or an array of glob pattern to use to ignore ROMs
-* `tags`: *optional*  An array of tags Nostegma should add to each game (e.g. `["Wii"]`)
+* `tags`: *optional*  An array of tags Nostegama should add to each game (e.g. `["Wii"]`)
 * `plugins`:  *optional* An array of [plugins](#plugins) to use while processing ROMs.
 * `extra`:  *optional* Extra properties to apply to a specific ROM. Plugins won't be able to alter these properties.
   * `appname`:  The name of the ROM that should be displayed on Steam
@@ -202,7 +202,7 @@ Non-Steam Game properties this plugin delivers:
 
 ## Configuration
 
-The `config.json` file and the command line interface are offering you options to configure Nostegma. The `config.json` file will override the default options. Options passed to the command line interface will override both the default options and the options provided by the `config.json` file.
+The `config.json` file and the command line interface are offering you options to configure Nostegama. The `config.json` file will override the default options. Options passed to the command line interface will override both the default options and the options provided by the `config.json` file.
 
 To use the command line options use this syntax:
 
@@ -220,7 +220,7 @@ cli:
 
 `--userdata-dir=<path>`
 
-The userdata directory is where Steam stores information of local users. If set to `null` Nostegma will try to figure out its location by itself, which is usually `C:\Program Files (x86)\Steam\userdata` on Windows, `~/.local/share/Steam/userdata` on Linux and `~/Library/Application Support/Steam/userdata` on OSX. If Nostegma is unable to find the userdata directory you should manually set this value.
+The userdata directory is where Steam stores information of local users. If set to `null` Nostegama will try to figure out its location by itself, which is usually `C:\Program Files (x86)\Steam\userdata` on Windows, `~/.local/share/Steam/userdata` on Linux and `~/Library/Application Support/Steam/userdata` on OSX. If Nostegama is unable to find the userdata directory you should manually set this value.
 
 ### Backup
 `config.json`:
@@ -237,7 +237,7 @@ cli:
 
 `--backup-dir=<path>`
 
-Nostegma will usually backup the `shortcuts.vdf` file which stores the current shortcuts to the Non-Steam Games and the `grid` directory into the operating system's temporary directory (`<tmp>/nostegma/backups`)
+Nostegama will usually backup the `shortcuts.vdf` file which stores the current shortcuts to the Non-Steam Games and the `grid` directory into the operating system's temporary directory (`<tmp>/nostegama/backups`)
 
 ### Logs
 For logging there is one additional file `log4js.js` you might want to look into, if you want to customize the output. Check log4js' [Wiki](https://github.com/nomiddlename/log4js-node/wiki) for more information.
@@ -245,7 +245,7 @@ For logging there is one additional file `log4js.js` you might want to look into
 `config.json`:
 ```json
 "log": {
-  "appenders": ["console","nostegma"],
+  "appenders": ["console","nostegama"],
   "dir": null
 }
 ```
@@ -253,13 +253,13 @@ cli:
 
 `--log-dir`
 
-Nostegma will usually output informations and errors both into the console and into the operating system's temporary director (`<tmp>/nostegma/logs`).
+Nostegama will usually output informations and errors both into the console and into the operating system's temporary director (`<tmp>/nostegama/logs`).
 
 ### Other
 
 `-i <file>` `--input=<file>` to use an other profile file instead of the default `profile.json` file
 
-`-o` `--overwrite` Nostegma usually complements its own shortcuts to the existing ones. This option will discard all existing shortcuts.
+`-o` `--overwrite` Nostegama usually complements its own shortcuts to the existing ones. This option will discard all existing shortcuts.
 
 `-h` `--help` lists all cli options
 
