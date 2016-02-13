@@ -58,18 +58,9 @@ Close the Steam Client first, then start Nostegama by entering `npm start` into 
 
 ## Profile
 
-### Emulator profile
-
-An emulator profile has the following options:
+Any profile has the following options:
 
 * `exe`:  *mandatory* The path to the executable of the emulator. Can be relative to the profile file.
-* ROMs by glob
-  * `glob`  *mandatory* A [glob](https://www.npmjs.com/package/glob) pattern (e.g. ` "D:\\Games\\Wii\\**\\*.@(iso|wbfs)"`)
-* ROMs by dir (will be ignored when `glob` is set)
-  * `dir`:  *mandatory* The directory where the ROMs can be found
-  * `recursive`:  *optional*  If Nostegama should search for ROMs recursively. Default `false`.
-  * `extensions`: *optional*  An array of extensions Nostegama should consider when searching for ROMs (e.g. `["iso","wbfs"]`)
-* `ignore`: *optional*  A glob pattern or an array of glob pattern to use to ignore ROMs
 * `tags`: *optional*  An array of tags Nostegama should add to each game (e.g. `["Wii"]`)
 * `plugins`:  *optional* An array of [plugins](#plugins) to use while processing ROMs.
 * `extra`:  *optional* Extra properties to apply to a specific ROM. Plugins won't be able to alter these properties.
@@ -80,6 +71,20 @@ An emulator profile has the following options:
   * `tags`: An array of tags to add to this ROM
   * `grid`: Path to a file that should serve as a grid image for this ROM
 * Additional options for [plugins](#plugins)
+
+### Emulator profile
+
+An emulator profile has the following *additional* options:
+
+* ROMs by glob
+  * `glob`  *mandatory* A [glob](https://www.npmjs.com/package/glob) pattern (e.g. ` "D:\\Games\\Wii\\**\\*.@(iso|wbfs)"`)
+* ROMs by dir (will be ignored when `glob` is set)
+  * `dir`:  *mandatory* The directory where the ROMs can be found
+  * `recursive`:  *optional*  If Nostegama should search for ROMs recursively. Default `false`.
+  * `extensions`: *optional*  An array of extensions Nostegama should consider when searching for ROMs (e.g. `["iso","wbfs"]`)
+* `ignore`: *optional*  A glob pattern or an array of glob pattern to use to ignore ROMs
+
+Either `glob` or `dir` must be present for this profile to be recognized as an emulator profile.
 
 Example:
 ```js
@@ -106,6 +111,19 @@ Example:
     }
   }
 }
+```
+
+### Single game profile
+
+A single game profile has the following *additional* options:
+
+* `exe`:  *mandatory* The path to the executable of the game or an array of multiple executables. Can be relative to the profile file.
+
+Neither `glob` or `dir` must be present for this profile to be recognized as a single game profile.
+
+Example:
+```js
+//TODO
 ```
 
 ## Plugins
@@ -188,6 +206,19 @@ Non-Steam Game properties this plugin delivers:
 * `exe`:  Uses [`DefaultPlugin`](#defaultplugin)'s implementation to build this property with `command="$e --batch --exec=$f"`
 * `tags`: Uses the info box of the game's Wiki page and the options of profile property `dolphin`
 
+### FileInfoPlugin
+
+This plugin will use the executable's details to determine its name.
+
+This plugin will probably only work on Windows. This plugin needs .NET 4.5 on Windows or Mono 4.x on Linux/OSX.
+
+Profile properties this plugin uses: *none*
+
+Non-Steam Game properties this plugin uses: *none*
+
+Non-Steam Game properties this plugin delivers:
+* `appname`: Uses either the executable's product name or its file description if present.
+
 ### LocalGridPlugin
 
 This plugin will browse the local storage for a suitable grid image.
@@ -267,11 +298,9 @@ Nostegama will usually output informations and errors both into the console and 
 
 * Is-Steam-running-detection
 * Tests
-* Simple game profile
 * Referencing profiles
 * german L10N
 
 ## Plans for 1.0.0
 
 * GUI
-* More plugins
