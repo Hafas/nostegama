@@ -11,7 +11,7 @@ describe("GoodToolsPlugin",function(){
     "command": "$e --something=$f"
   };
   it("fills with default data",function(done){
-    var stringsToTest=["C:\\something\\something\\Game (U) [!].abc","C:\\something (U)\\something\\[pre] good_game.abc"];
+    var stringsToTest=["C:\\something\\something\\Game (U) [!].abc","C:\\something (U)\\something\\[pre] good_game (post).abc"];
     var expected=["Game","good_game"];
     var i=0;
     Async.eachSeries(stringsToTest,function(stringToTest,callback){

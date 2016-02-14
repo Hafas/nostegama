@@ -6,6 +6,7 @@ var GlobalConfiguration=require("../lib/GlobalConfiguration");
 var GameTDBPlugin=require("../plugins/GameTDBPlugin");
 
 describe("GameTDBPlugin",function(){
+  this.timeout(0);
   var profile={
     "gameTDB": {
       "platform": "Wii",
