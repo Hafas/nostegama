@@ -8,11 +8,7 @@ var DefaultPlugin=function DefaultPlugin(params){
   params=params || {};
   var profile=params.profile || {};
   this.command=profile.command || "$e $f";
-  this.defaultGrid=null;
-  var defaultGrid=profile.defaultGrid?String(profile.defaultGrid):null;
-  if(defaultGrid){
-    this.defaultGrid=path.resolve(params.cwd,defaultGrid);
-  }
+  this.defaultGrid=profile.defaultGrid;
   this.exe=params.exe;
   this.file=params.file;
 };
@@ -67,21 +63,6 @@ DefaultPlugin.prototype.getStartDir=function(params,callback){
   }
   callback(null,startDir);
 };
-
-// DefaultPlugin.prototype.getIcon=function(params,callback){
-//   LOG.trace("DefaultPlugin.getIcon");
-//   callback(null,null);
-// };
-//
-// DefaultPlugin.prototype.getShortcutPath=function(params,callback){
-//   LOG.trace("DefaultPlugin.getShortcutPath");
-//   callback(null,null);
-// };
-//
-// DefaultPlugin.prototype.getTags=function(params,callback){
-//   LOG.trace("DefaultPlugin.getTags");
-//   callback(null,null);
-// };
 
 DefaultPlugin.prototype.getGrid=function(params,callback){
   LOG.trace("DefaultPlugin.getGrid");

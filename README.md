@@ -64,6 +64,7 @@ Any profile has the following options:
 * `tags`: *optional*  An array of tags Nostegama should add to each game (e.g. `["Wii"]`)
 * `plugins`:  *optional* An array of [plugins](#plugins) to use while processing ROMs.
 * `gridDir`: *optional* Where grids are to be cached. Default is in `grid` in the application directory.
+* `defaultGrid`: *optional* When no plugin provides a grid, this default grid will be used.
 * `extra`:  *optional* Extra properties to apply to a specific ROM. Plugins won't be able to alter these properties.
   * `appname`:  The name of the ROM that should be displayed on Steam
   * `exe`:  The command to use to run this ROM
