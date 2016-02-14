@@ -23,7 +23,7 @@ This application hasn't been tested on Linux or OSX yet, but the code is mostly 
 
 ### Create a profile
 
-The first (and as of now only) profile-type for Nostegama is an [emulator profile](#emulator-profile). Profiles are defined in the `profile.json` file and must be formed in [JSON](http://www.json.org/) (comments allowed). A minimal emulator profile might look like that:
+The most useful profile-type for Nostegama is an [emulator profile](#emulator-profile). Profiles are defined in the `profile.json` file and must be formed in [JSON](http://www.json.org/) (comments allowed). A minimal emulator profile might look like that:
 
 ```js
 //minimal emulator example
@@ -63,6 +63,7 @@ Any profile has the following options:
 * `exe`:  *mandatory* The path to the executable of the emulator. Can be relative to the profile file.
 * `tags`: *optional*  An array of tags Nostegama should add to each game (e.g. `["Wii"]`)
 * `plugins`:  *optional* An array of [plugins](#plugins) to use while processing ROMs.
+* `gridDir`: *optional* Where grids are to be cached. Default is in `grid` in the application directory.
 * `extra`:  *optional* Extra properties to apply to a specific ROM. Plugins won't be able to alter these properties.
   * `appname`:  The name of the ROM that should be displayed on Steam
   * `exe`:  The command to use to run this ROM
@@ -241,7 +242,7 @@ This plugin will browse the local storage for a suitable grid image.
 *The file name should equal the grid image's file name for this plugin to work properly.*
 
 Profile properties this plugin uses:
-* `gridDir`:  *mandatory* Path to a directory where the plugin should browse for grid images
+* `gridDir`:  *optional* Path to a directory where the plugin should browse for grid images. Default is `grid` in the application directory.
 
 Non-Steam Game properties this plugin uses: *none*
 
@@ -289,6 +290,15 @@ To use the command line options use this syntax:
 
 `npm start -- <option>[=value] [...]`
 
+### General
+`config.json`:
+```json
+"general": {
+  "saveGridImages": true
+}
+```
+If `saveGridImages` is set to `false`, the images won't be saved in `gridDir`. The `LocalGridPlugin` won't find the grid images the next time Nostegama is run and will be downloaded again.
+
 ### Userdata
 
 `config.json`:
@@ -310,7 +320,7 @@ The userdata directory is where Steam stores information of local users. If set 
   "shortcuts": true,
   "grids": true,
   "dir": null
-},
+}
 ```
 cli:
 

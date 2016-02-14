@@ -1,4 +1,8 @@
 {
+  "general": {
+    //Whether or not to also save grid images into the gridDir provided in the profile. Default true
+    "saveGridImages": true
+  },
   "steam": {
     //the userdata directory. If null Nostegama will try to locate it automatically, but if it fails you may want to set this value manually
     "userdataDir": null
