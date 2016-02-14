@@ -6,11 +6,8 @@ var GlobalConfiguration=require("../lib/GlobalConfiguration");
 var GoodToolsPlugin=require("../plugins/GoodToolsPlugin");
 
 describe("GoodToolsPlugin",function(){
-  var profile={
-    "defaultGrid": "C:\\Something\\default.png",
-    "command": "$e --something=$f"
-  };
-  it("fills with default data",function(done){
+  var profile={};
+  it("remove brackets from file name",function(done){
     var stringsToTest=["C:\\something\\something\\Game (U) [!].abc","C:\\something (U)\\something\\[pre] good_game (post).abc"];
     var expected=["Game","good_game"];
     var i=0;

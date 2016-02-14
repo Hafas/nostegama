@@ -236,6 +236,24 @@ Non-Steam Game properties this plugin uses: *none*
 Non-Steam Game properties this plugin delivers:
 * `appname`: Uses either the executable's product name or its file description if present.
 
+### GameTDBPlugin
+
+This plugin will use [GameTDB](http://www.gametdb.com/) to gather information.
+
+*The file name should be the game's GameID for this plugin to work properly.*
+
+**This plugin is deliberately slow to avoid stressing the service**
+
+Profile properties this plugin uses:
+* `gameTDB` *mandatory*
+* `platform`: *mandatory*  The platform should be either `GC`. `Wii`, `Wii U` or `PS3`
+* `language`: *optional* Default `EN`. Abbreviation of a language GameTDB uses, such as `EN`, `DE`, `FR`, etc.
+
+Non-Steam Game properties this plugin uses: *none*
+
+Non-Steam Game properties this plugin delivers:
+* `appname`: Returns the game's name dependent on `language`. If there is no name for the given language. The english one will be used.
+
 ###  GoodToolsPlugin
 
 Profile properties this plugin uses: *none*
@@ -259,23 +277,20 @@ Non-Steam Game properties this plugin uses: *none*
 Non-Steam Game properties this plugin delivers:
 * `grid`: Returns the path of the grid image. The image's name needs to be the same as the name of the file and its extension has to be either `jpeg`, `jpg`, `png` or `tiff`.
 
-### GameTDBPlugin
+### MAMEPlugin
 
-This plugin will use [GameTDB](http://www.gametdb.com/) to gather information.
-
-*The file name should be the game's GameID for this plugin to work properly.*
-
-**This plugin is deliberately slow to avoid stressing the service**
+This plugin will use [MAME](http://mamedev.org/) to determine a game's name.
 
 Profile properties this plugin uses:
-* `gameTDB` *mandatory*
-  * `platform`: *mandatory*  The platform should be either `GC`. `Wii`, `Wii U` or `PS3`
-  * `language`: *optional* Default `EN`. Abbreviation of a language GameTDB uses, such as `EN`, `DE`, `FR`, etc.
+* `exe`:  *optional*  Path to the executable of MAME. If this is not MAME, `exe` must be set in the `MAME`-Object (see below).
+* `MAME`: *optional*
+  * `exe`:  *optional* Path to the executable of MAME. If not present, the `exe` of the profile must be of MAME (see above).
+  * `keepBrackets`: *optional* Whether or not to keep the brackets of the game's description
 
 Non-Steam Game properties this plugin uses: *none*
 
 Non-Steam Game properties this plugin delivers:
-* `appname`: Returns the game's name dependent on `language`. If there is no name for the given language. The english one will be used.
+* `appname`:  Uses the ROM's description
 
 ### WindowsShortcutPlugin
 
