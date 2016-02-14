@@ -225,7 +225,7 @@ Non-Steam Game properties this plugin delivers:
 
 This plugin will use the executable's details to determine its name.
 
-*This plugin will probably only work on Windows. This plugin needs .NET 4.5 on Windows or Mono 4.x on Linux/OSX.*
+**This plugin will probably only work on Windows. This plugin needs .NET 4.5 on Windows or Mono 4.x on Linux/OSX.**
 
 Profile properties this plugin uses: *none*
 
@@ -270,7 +270,7 @@ Non-Steam Game properties this plugin delivers:
 
 This plugin will take over the shortcut's properties.
 
-*This plugin will only work on Windows*
+**This plugin will only work on Windows**
 
 Profile properties this plugin uses: *none*
 
