@@ -122,8 +122,19 @@ A single game profile has the following *additional* options:
 Neither `glob` or `dir` must be present for this profile to be recognized as a single game profile.
 
 Example:
-```js
-//TODO
+```json
+{
+  "GOG": {
+    "exe": "C:\\Program Files (x86)\\GalaxyClient\\Games\\Dungeon Keeper Gold\\Launch Dungeon Keeper Gold.lnk",
+    "tags": "GOG",
+    "plugins": "WindowsShortcutPlugin",
+    "extra": {
+      "Launch Dungeon Keeper Gold.lnk": {
+        "appname": "Dungeon Keeper"
+      }
+    }
+  }
+}
 ```
 
 ## Plugins
@@ -214,7 +225,7 @@ Non-Steam Game properties this plugin delivers:
 
 This plugin will use the executable's details to determine its name.
 
-This plugin will probably only work on Windows. This plugin needs .NET 4.5 on Windows or Mono 4.x on Linux/OSX.
+*This plugin will probably only work on Windows. This plugin needs .NET 4.5 on Windows or Mono 4.x on Linux/OSX.*
 
 Profile properties this plugin uses: *none*
 
@@ -254,6 +265,21 @@ Non-Steam Game properties this plugin uses: *none*
 
 Non-Steam Game properties this plugin delivers:
 * `appname`: Returns the game's name dependent on `language`. If there is no name for the given language. The english one will be used.
+
+### WindowsShortcutPlugin
+
+This plugin will take over the shortcut's properties.
+
+*This plugin will only work on Windows*
+
+Profile properties this plugin uses: *none*
+
+Non-Steam Game properties this plugin uses: *none*
+
+Non-Steam Game properties this plugin delivers:
+* `exe`:  Same as the shortcut's
+* `StartDir`: Same as the shortcut's
+* `icon`: Same as the shortcut's. Steam will do nothing with this information if the extension of the icon is neither "exe" nor "png" nor "tga".
 
 ## Configuration
 
