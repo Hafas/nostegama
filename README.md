@@ -2,7 +2,7 @@
 
 ## What is Nostegama?
 
-Nostegama is a <b>No</b>n-<b>Ste</b>am <b>G</b>ame <b>Ma</b>nager managing your Non-Steam Games using the command-line interface. It's purpose and goal is to add shortcuts of your Non-Steam Games into your [Steam](http://store.steampowered.com/)'s library.
+Nostegama is a <b>No</b>n-<b>Ste</b>am <b>Ga</b>me <b>Ma</b>nager managing your Non-Steam Games using the command-line interface. It's purpose and goal is to add shortcuts of your Non-Steam Games into your [Steam](http://store.steampowered.com/)'s library.
 
 ## Installation
 
