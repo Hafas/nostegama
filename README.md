@@ -235,6 +235,15 @@ Non-Steam Game properties this plugin uses: *none*
 Non-Steam Game properties this plugin delivers:
 * `appname`: Uses either the executable's product name or its file description if present.
 
+###  GoodToolsPlugin
+
+Profile properties this plugin uses: *none*
+
+Non-Steam Game properties this plugin uses: *none*
+
+Non-Steam Game properties this plugin delivers:
+* `appname`: Return what's left after removing the content between round and square brackets of a file name.
+
 ### LocalGridPlugin
 
 This plugin will browse the local storage for a suitable grid image.
