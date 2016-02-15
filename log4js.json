@@ -9,9 +9,9 @@
       }
     },
     {
-      "category": "nostegma",
+      "category": "nostegama",
       "type": "dateFile",
-      "filename": "nostegma.log",
+      "filename": "nostegama.log",
       "pattern": "-MM-dd",
       "layout": {
         "type": "pattern",
