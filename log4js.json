@@ -21,6 +21,6 @@
   ],
   "levels": {
     "console": "INFO",
-    "nostegma": "TRACE"
+    "nostegama": "TRACE"
   }
 }
