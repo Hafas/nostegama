@@ -25,21 +25,32 @@ MAMEPlugin.prototype.getAppname=function(params,callback){
   }
   var self=this;
   var filename=path.parse(this.file).name;
-  var mame=spawn(this.exe,["-ll",filename]);
+  try{
+    var mame=spawn(this.exe,["-ll",filename]);
+  }catch(e){
+    return callback(e);
+  }
   var out=[];
-  var err=[];
+  var err="";
   mame.stdout.on("data",function(data){
     LOG.debug("MAMEPlugin.getAppname","stdout.on.data",String(data));
     out.push(data);
   });
   mame.stderr.on("data",function(data){
     LOG.debug("MAMEPlugin.getAppname","stderr.on.data",String(data));
-    err.push(data);
+    err+=data;
+  });
+  mame.on("error",function(error){
+    LOG.debug("MAMEPlugin.getAppname","on.error",error);
+    err=error;
   });
   mame.on("close",function(code){
     LOG.debug("MAMEPlugin.getAppname","on.close",code);
-    if(code!==0 && err.length>0){
-      return callback(err.join());
+    if(err){
+      return callback(err);
+    }
+    if(code!==0){
+      return callback(code);
     }
     var pattern=new RegExp(filename+'\\s*"(.*)"');
     out=out.join("");

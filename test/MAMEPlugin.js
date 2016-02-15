@@ -36,10 +36,7 @@ describe("MAMEPlugin",function(){
 
   it("determines appname with mame.exe while removing brackets",function(done){
     var profile={
-      "exe": exe,
-      "MAME": {
-        "keepBrackets": false
-      }
+      "exe": exe
     };
     var gamesToTest=["avigo.zip","exprraid.zip","island.zip","myststar.zip","quizo.zip","urashima","yorijori"];
     var expected=["TI Avigo 10 PDA","Express Raider","Island","Mystic Star","Quiz Olympic","Otogizoushi Urashima Mahjong","Yori Jori Kuk Kuk"];
@@ -83,6 +80,30 @@ describe("MAMEPlugin",function(){
         assert.ok(results);
         assert.isString(results.appname);
         assert.equal(results.appname,expected[i]);
+        ++i;
+        callback();
+      })
+    },done);
+  });
+
+  it("uses the plugin with a non-existent exe",function(done){
+    var profile={
+      "exe": "X:\\something-something.exe",
+      "MAME": {
+        "keepBrackets": false
+      }
+    };
+    var gamesToTest=["avigo.zip","exprraid.zip","island.zip","myststar.zip","quizo.zip","urashima","yorijori"];
+    var expected=["TI Avigo 10 PDA","Express Raider","Island","Mystic Star","Quiz Olympic","Otogizoushi Urashima Mahjong","Yori Jori Kuk Kuk"];
+    var i=0;
+    Async.eachSeries(gamesToTest,function(gameToTest,callback){
+      var plugin=new MAMEPlugin({profile: profile, file: gameToTest, exe: profile.exe});
+      Async.parallel({
+        appname: function(callback){
+          plugin.getAppname({},callback);
+        }
+      },function(err,results){
+        assert.ok(err);
         ++i;
         callback();
       })

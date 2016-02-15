@@ -1,6 +1,6 @@
 {
   "name": "nostegama",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Nostegama - A Non-Steam Game Manager",
   "dependencies": {
     "async": "^1.5.2",
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Hafas/nostegma.git"
+    "url": "https://github.com/Hafas/nostegama.git"
   },
   "files": [
     "bin/",
@@ -50,7 +50,7 @@
   "author": "Theodor Hafas",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/Hafas/nostegma/issues"
+    "url": "https://github.com/Hafas/nostegama/issues"
   },
-  "homepage": "https://github.com/Hafas/nostegma#readme"
+  "homepage": "https://github.com/Hafas/nostegama#readme"
 }
