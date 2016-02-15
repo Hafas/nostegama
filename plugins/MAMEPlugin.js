@@ -25,11 +25,7 @@ MAMEPlugin.prototype.getAppname=function(params,callback){
   }
   var self=this;
   var filename=path.parse(this.file).name;
-  try{
-    var mame=spawn(this.exe,["-ll",filename]);
-  }catch(e){
-    return callback(e);
-  }
+  var mame=spawn(this.exe,["-ll",filename]);
   var out=[];
   var err="";
   mame.stdout.on("data",function(data){
