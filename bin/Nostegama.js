@@ -9,12 +9,26 @@ var LOG=require("../lib/Logger");
 var ProfileController=require("../lib/ProfileController");
 var Prompts=require("../lib/Prompts");
 var ShortcutCollection=require("node-steam-shortcuts").ShortcutCollection;
+var Steam=require("../lib/Steam");
 var TemporaryTracker=require("../lib/TemporaryTracker");
 var Userdata=require("../lib/Userdata");
 
 Async.series([
   function(callback){
     Userdata.validate(callback);
+  },
+  function(callback){
+    Async.waterfall([
+      function(callback){
+        Steam.isRunning(callback);
+      },
+      function(isRunning,callback){
+        if(!isRunning){
+          return callback();
+        }
+        Prompts.steamIsRunning(callback);
+      }
+    ],callback);
   },
   function(callback){
     Async.waterfall([
@@ -82,8 +96,12 @@ Async.series([
 ],function(err){
   var exitCode=0;
   if(err){
-    LOG.fatal(err.message || err);
-    exitCode=1;
+    if(err.code===Errors.canceled.code){
+      LOG.info(i18n.__("Canceled"));
+    }else{
+      LOG.fatal(err.message || err);
+      exitCode=1;
+    }
   }
   TemporaryTracker.cleanup(function(){
     if(!err){

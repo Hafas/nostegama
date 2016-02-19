@@ -50,5 +50,10 @@
 	"The extension of the icon '%s' is not exe/png/tga. Steam only supports these extension for icons.": "The extension of the icon '%s' is not exe/png/tga. Steam only supports these extension for icons.",
 	"Failed to copy '%s' to '%s'. Reason: %s": "Failed to copy '%s' to '%s'. Reason: %s",
 	"Processing '%s' [:bar] :current/:total :elapseds\n": "Processing '%s' [:bar] :current/:total :elapseds\n",
-	"Processing '%s'\t[:bar] :current/:total :elapseds": "Processing '%s'\t[:bar] :current/:total :elapseds"
+	"Processing '%s'\t[:bar] :current/:total :elapseds": "Processing '%s'\t[:bar] :current/:total :elapseds",
+	"Steam is currently running. Proceed anyway?": "Steam is currently running. Proceed anyway?",
+	"y|yes": "y|yes",
+	"n|no": "n|no",
+	"Steam is currently running. Proceed anyway? (yes|no)": "Steam is currently running. Proceed anyway? (yes|no)",
+	"Canceled": "Canceled"
 }

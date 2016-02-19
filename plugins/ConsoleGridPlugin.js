@@ -157,6 +157,9 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
       callback();
     });
   },function(){
+    if(!gridFilepath){
+      LOG.debug("No grid image found for any of:",searchInputsToTry)
+    }
     callback && callback(null,gridFilepath);
   });
 };
