@@ -46,10 +46,9 @@ function GameTDBPlugin(params){
 GameTDBPlugin.prototype=Object.create(AbstractPlugin.prototype);
 GameTDBPlugin.prototype.constructor=GameTDBPlugin;
 
-//to prevent DDOSing
-var TIME_BETWEEN_REQUESTS=1000;
+var QUEUE_NAME="gametdb";
+
 var GAMETDB_URL="http://www.gametdb.com/";
-var okToRequest=true;
 
 GameTDBPlugin.prototype.before=function(callback){
   var searchInput;
@@ -59,29 +58,19 @@ GameTDBPlugin.prototype.before=function(callback){
     return callback(ono(i18n.__("No file provided.")));
   }
   var self=this;
-  Async.whilst(function(){
-    return !okToRequest;
-  },function(callback){
-    setTimeout(callback,10);
-  },function(){
-    okToRequest=false;
-    var searchUrl=GAMETDB_URL+self.platform+"/"+encodeURIComponent(searchInput);
-    LOG.debug("GameTDBPlugin.before","searchUrl",searchUrl);
-    request(searchUrl,function(err,response,body){
-      setTimeout(function(){
-        okToRequest=true;
-      },TIME_BETWEEN_REQUESTS);
-      if(err){
-        return callback(err);
-      }
-      LOG.debug("GameTDBPlugin.before","statusCode",response.statusCode);
-      if(response.statusCode===404){
-        return callback(ono(i18n.__("No page on GameTDB found for %s",searchInput)));
-      }
-      self.body=cheerio.load(body);
-      callback();
-    });
-  })
+  var searchUrl=GAMETDB_URL+self.platform+"/"+encodeURIComponent(searchInput);
+  LOG.debug("GameTDBPlugin.before","searchUrl",searchUrl);
+  this.sendRequest(QUEUE_NAME,searchUrl,function(err,response,body){
+    if(err){
+      return callback(err);
+    }
+    LOG.debug("GameTDBPlugin.before","statusCode",response.statusCode);
+    if(response.statusCode===404){
+      return callback(ono(i18n.__("No page on GameTDB found for %s",searchInput)));
+    }
+    self.body=cheerio.load(body);
+    callback();
+  });
 };
 
 GameTDBPlugin.prototype.getAppname=function(params,callback){

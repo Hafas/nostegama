@@ -25,6 +25,8 @@ var DolphinPlugin=function DolphinPlugin(params){
 DolphinPlugin.prototype=Object.create(AbstractPlugin.prototype);
 DolphinPlugin.prototype.constructor=DolphinPlugin;
 
+var QUEUE_NAME="dolphin-wiki";
+
 var WIKI_URL="https://wiki.dolphin-emu.org/index.php?title=";
 DolphinPlugin.prototype.before=function(callback){
   var searchInput;
@@ -36,7 +38,7 @@ DolphinPlugin.prototype.before=function(callback){
   var self=this;
   var searchUrl=WIKI_URL+encodeURIComponent(searchInput);
   LOG.debug("DolphinPlugin.before","searchUrl",searchUrl);
-  request(searchUrl,function(err,response,body){
+  this.sendRequest(QUEUE_NAME,searchUrl,function(err,response,body){
     if(err){
       return callback && callback(err);
     }

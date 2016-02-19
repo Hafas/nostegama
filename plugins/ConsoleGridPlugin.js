@@ -37,6 +37,8 @@ var COMMON_REPLACERS=[
   {"replace": /\bXV\b/g, "with": "15"}
 ];
 
+var QUEUE_NAME="console-grid";
+
 //TODO acquire grid via API when user specifies the console in the profile.json
 
 ConsoleGridPlugin.prototype.getGrid=function(params,callback){
@@ -95,7 +97,7 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
       function(callback){
         var url=SEARCH_URL+encodeURIComponent(searchInput);
         LOG.debug("ConsoleGridPlugin.getGrid","searchUrl",url);
-        request(url,callback);
+        self.sendRequest(QUEUE_NAME,url,callback);
       },
       function(response,body,callback){
         var $=cheerio.load(body);
@@ -107,7 +109,7 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
         var href=results[0].attribs.href;
         var url=CONSOLEGRID_URL+href;
         LOG.debug("ConsoleGridPlugin.getGrid","gameUrl",url);
-        request(url,callback);
+        self.sendRequest(QUEUE_NAME,url,callback);
       },
       function(response,body,callback){
         if(!body){
@@ -120,34 +122,7 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
         }
         var source=image[0].attribs.src;
         LOG.debug("ConsoleGridPlugin.getGrid","imageUrl",source);
-        //download the image somewhere in the temporary directory.
-        Async.waterfall([
-          function(callback){
-            tmp.tmpName({postfix: path.extname(source)},callback);
-          },
-          function(tmpFilepath,callback){
-            var writeStream=fs.createWriteStream(tmpFilepath);
-            var callbackCalled=false;
-            writeStream.on("error",function(err){
-              if(callbackCalled){
-                return;
-              }
-              callbackCalled=true;
-              callback(err);
-            }).on("finish",function(){
-              if(callbackCalled){
-                return;
-              }
-              callbackCalled=true;
-              //callback the path where where the grid image is. Nostegama will see to it, that it goes where it should.
-              callback(null,tmpFilepath);
-            }).on("pipe",function(){
-              LOG.debug("Piping into %s",tmpFilepath);
-              self.trackTemporary(tmpFilepath);
-            });
-            request(source).pipe(writeStream);
-          }
-        ],callback);
+        self.downloadFile(source,callback);
       }
     ],function(err,filepath){
       gridFilepath=filepath;
@@ -168,13 +143,11 @@ ConsoleGridPlugin.prototype.getGrid=function(params,callback){
 try{
   var cheerio=require("cheerio");
   var diacritics=require("diacritics");
-  var request=require("request");
-  var tmp=require("tmp");
 }catch(e){
   LOG.error(e);
 }
 
-if(!cheerio || !request || !tmp){
+if(!cheerio){
   ConsoleGridPlugin.prototype.getGrid=null;
 }
 

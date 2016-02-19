@@ -1,6 +1,6 @@
 {
   "name": "nostegama",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Nostegama - A Non-Steam Game Manager",
   "dependencies": {
     "async": "^1.5.2",
@@ -15,14 +15,14 @@
     "ono": "^2.1.1",
     "progress": "^1.1.8",
     "prompt": "^0.2.14",
-    "ps-node": "0.0.5"
+    "ps-node": "0.0.5",
+    "request": "^2.69.0"
   },
   "optionalDependencies": {
     "cheerio": "^0.20.0",
     "deasync": "^0.1.4",
     "diacritics": "^1.2.3",
     "edge": "^5.0.0",
-    "request": "^2.69.0",
     "tmp": "0.0.28",
     "windows-shortcuts": "^0.1.1",
     "winreg": "0.0.16"

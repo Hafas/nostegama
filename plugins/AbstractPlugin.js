@@ -1,3 +1,10 @@
+var Async=require("async");
+var fs=require("fs");
+var path=require("path");
+var request=require("request");
+var tmp=require("tmp");
+
+var LOG=require("../lib/Logger");
 var TemporaryTracker=require("../lib/TemporaryTracker");
 
 /**
@@ -71,6 +78,49 @@ AbstractPlugin.prototype.getGrid=null;
 
 AbstractPlugin.prototype.trackTemporary=function(temporaryFile){
   TemporaryTracker.track(temporaryFile);
+};
+
+var requestQueues={};
+AbstractPlugin.prototype.sendRequest=function(queueName,url,callback){
+  if(!requestQueues[queueName]){
+    requestQueues[queueName]=Async.queue(function(task,callback){
+      request(task,callback);
+    });
+  }
+  requestQueues[queueName].push(url,callback);
+};
+
+AbstractPlugin.prototype.downloadFile=function(url,callback){
+  var self=this;
+  Async.waterfall([
+    function(callback){
+      tmp.tmpName({postfix: path.extname(url)},callback);
+    },
+    function(tmpFilepath,callback){
+      var writeStream=fs.createWriteStream(tmpFilepath);
+      var callbackCalled=false;
+      writeStream.on("error",function(err){
+        if(callbackCalled){
+          return;
+        }
+        callbackCalled=true;
+        callback(err);
+      }).on("finish",function(){
+        if(callbackCalled){
+          return;
+        }
+        callbackCalled=true;
+        //callback the path where where the grid image is. Nostegama will see to it, that it goes where it should.
+        callback(null,tmpFilepath);
+      }).on("pipe",function(){
+        LOG.debug("Piping into %s",tmpFilepath);
+        self.trackTemporary(tmpFilepath);
+      });
+      request(url).pipe(writeStream).on("error",function(err){
+        console.error("Ooops:",err);
+      });
+    }
+  ],callback);
 };
 
 module.exports=AbstractPlugin;
