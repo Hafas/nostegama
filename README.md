@@ -242,8 +242,6 @@ This plugin will use [GameTDB](http://www.gametdb.com/) to gather information.
 
 *The file name should be the game's GameID for this plugin to work properly.*
 
-**This plugin is deliberately slow to avoid stressing the service**
-
 Profile properties this plugin uses:
 * `gameTDB` *mandatory*
 * `platform`: *mandatory*  The platform should be either `GC`. `Wii`, `Wii U` or `PS3`
@@ -381,7 +379,6 @@ Nostegama will usually output informations and errors both into the console and 
 
 ## Plans for 0.1.0
 
-* Is-Steam-running-detection
 * Tests
 * Referencing profiles
 * german L10N
